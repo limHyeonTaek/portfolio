@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>임현택 | 풀스택 개발자 포트폴리오</title>
+<meta name="description" content="TnG 의 사내 보험 전산과 대외 사이트 플랜잇을 설계·구현·배포·운영하고, 피그마 시안 코드화와 메타 광고 운영까지 맡고 있습니다.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23009C82' stroke-width='6'/%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<style>
+:root{
+  --bg:#F6F8F8;--surface:#FFFFFF;--ink:#16232B;--muted:#52616A;--line:#D9E1E1;--line-strong:#9AA9AB;
+  --mint:#009C82;--mint-ink:#00735C;--sunk:#E8EEEE;--seg2:#5FBFAA;--seg3:#B4C4C4;
+  --nav-bg:rgba(246,248,248,.88);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1C1E21;--surface:#24272B;--ink:#E7ECEC;--muted:#A0ABAE;--line:#343A3F;--line-strong:#5E686D;
+    --mint:#2CD3B4;--mint-ink:#4FE0C4;--sunk:#2A2E33;--seg2:#1F9A84;--seg3:#55616A;
+    --nav-bg:rgba(28,30,33,.88);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1C1E21;--surface:#24272B;--ink:#E7ECEC;--muted:#A0ABAE;--line:#343A3F;--line-strong:#5E686D;
+  --mint:#2CD3B4;--mint-ink:#4FE0C4;--sunk:#2A2E33;--seg2:#1F9A84;--seg3:#55616A;
+  --nav-bg:rgba(28,30,33,.88);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
+html:has(dialog[open]){overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;
+  font-size:17px;line-height:1.75;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{text-wrap:balance}
+p,li,dd{text-wrap:pretty}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
+a{color:var(--mint-ink);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+img{max-width:100%}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.84em;background:var(--sunk);padding:.12em .4em;border-radius:4px;overflow-wrap:anywhere;word-break:normal}
+:focus-visible{outline:2px solid var(--mint-ink);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:6px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* 상단 내비게이션 */
+.nav{position:sticky;top:0;z-index:50;background:var(--nav-bg);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:24px;height:60px}
+.brand{flex:none;font-weight:800;font-size:18px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.nav-in>nav{flex:1;min-width:0;display:flex}
+.nw{white-space:nowrap}
+.nav-links{position:relative;flex:1;min-width:0;display:flex;gap:2px;margin:0;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{display:block;white-space:nowrap;padding:8px 11px;font-size:15px;font-weight:500;color:var(--muted);text-decoration:none;border-radius:6px}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a[aria-current]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--mint);border-radius:0}
+.nav-links a:focus-visible{outline-offset:-2px}
+.theme{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;padding:0}
+.theme:hover{border-color:var(--line-strong)}
+.theme .i-sun{display:none}
+:root[data-theme="dark"] .theme .i-sun{display:block}
+:root[data-theme="dark"] .theme .i-moon{display:none}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .theme .i-sun{display:block}
+  :root:not([data-theme="light"]) .theme .i-moon{display:none}
+}
+
+/* 소개 */
+.hero{padding:96px 0 112px}
+.hero h1{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;column-gap:20px;row-gap:2px}
+.hero .name{font-size:76px;font-weight:800;letter-spacing:-.035em;line-height:1.1}
+.hero .role{font-size:26px;font-weight:600;color:var(--muted);letter-spacing:-.015em}
+.lede{font-size:21px;line-height:1.7;max-width:33em;margin:28px 0 0}
+.gh{display:inline-block;margin-top:24px;font-size:17px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--mint);padding-bottom:1px}
+.gh:hover{color:var(--mint-ink)}
+
+/* 노선도: 광고 → 랜딩 → 접수 → 전산 */
+.route{margin:76px 0 0}
+.route figcaption{font-size:15px;color:var(--muted);max-width:40em;margin:0 0 18px}
+.route-map{position:relative;padding-top:66px}
+.stops{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.stop{position:relative;padding:38px 36px 0 0;--d:calc(var(--i) * .3s + .15s)}
+.stop::before{content:"";position:absolute;z-index:1;left:0;top:0;width:16px;height:16px;border-radius:50%;border:4px solid var(--mint);background:var(--bg);animation:pop .35s ease-out var(--d) backwards}
+.stop.is-transfer::before{width:12px;height:12px;left:2px;top:2px;border-width:3px}
+.stop:last-child::before{background:var(--mint)}
+.stop:not(:last-child)::after{content:"";position:absolute;left:8px;right:-8px;top:6px;height:4px;background:linear-gradient(var(--mint),var(--mint)) no-repeat 0 0/100% 100%;animation:draw-x .4s cubic-bezier(.5,0,.3,1) calc(var(--d) + .12s) backwards}
+.stop-name{display:inline-block;font-size:19px;font-weight:700;letter-spacing:-.015em;color:var(--ink);text-decoration:none}
+a.stop-name:hover{color:var(--mint-ink);text-decoration:underline;text-decoration-color:var(--mint)}
+.stop p{margin:6px 0 0;font-size:15px;line-height:1.65;color:var(--muted)}
+.loop{position:absolute;top:14px;left:8px;width:75%;height:52px;margin:0;border:2px dashed var(--line-strong);border-bottom:0;border-radius:22px 22px 0 0;animation:fade .5s ease-out 1.45s backwards}
+.loop::after{content:"";position:absolute;left:-7px;bottom:-1px;border-style:solid;border-width:8px 6px 0;border-color:var(--line-strong) transparent transparent}
+.loop-text{position:absolute;top:0;left:50%;transform:translate(-50%,-55%);background:var(--bg);padding:0 14px;font-size:14px;color:var(--muted);white-space:nowrap}
+.loop-ico{display:none}
+.route.is-done .stop::before,.route.is-done .stop::after,.route.is-done .loop{animation:none}
+@keyframes draw-x{from{background-size:0 100%}to{background-size:100% 100%}}
+@keyframes draw-y{from{background-size:100% 0}to{background-size:100% 100%}}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* 공통 섹션 */
+.sec{padding:120px 0;border-top:1px solid var(--line)}
+.sec-h{font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1.25;margin:0 0 40px}
+
+/* 한눈에 보기 */
+.facts-top{display:flex;flex-wrap:wrap;gap:6px 48px;margin:0 0 36px}
+.facts-top div{display:flex;gap:14px;align-items:baseline}
+.facts-top dt{flex:none;color:var(--muted);font-size:15px;font-weight:600}
+.facts-top dd{margin:0}
+.metrics{display:grid;grid-template-columns:1fr 1fr 1.35fr 1fr;margin:0;border-top:2px solid var(--ink)}
+.metric{padding:22px 28px 6px;border-left:1px solid var(--line)}
+.metric:first-child{padding-left:0;border-left:0}
+.metric dt{font-size:15px;font-weight:600;color:var(--muted)}
+.metric dd{margin:0}
+.big{font-size:52px;font-weight:800;letter-spacing:-.035em;line-height:1.15;margin-top:6px!important;font-variant-numeric:tabular-nums;white-space:nowrap}
+.big small{font-size:20px;font-weight:600;letter-spacing:0;color:var(--muted);margin-left:6px}
+.big small.pre{margin:0 4px 0 0}
+.sub{font-size:14.5px;color:var(--muted);margin-top:2px!important}
+.bar{display:flex;height:6px;margin-top:18px!important;border-radius:3px;overflow:hidden;background:var(--sunk)}
+.bar i{display:block;height:100%;background:var(--mint-ink)}
+.bar i+i{border-left:2px solid var(--bg)}
+.ticks{display:flex;gap:4px;margin-top:18px!important}
+.ticks i{flex:1;height:6px;border-radius:1px;background:var(--mint-ink)}
+.legend{list-style:none;padding:0;margin:12px 0 0;font-size:14.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:2px 18px}
+.legend li{display:flex;align-items:center;gap:7px;font-variant-numeric:tabular-nums}
+.legend li::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--c)}
+.overview-note{margin:36px 0 0;color:var(--muted);font-size:15.5px;max-width:44em}
+
+/* 프로젝트 */
+.proj-head{margin:0 0 60px}
+.proj-head h2{display:flex;align-items:center;gap:18px;margin:0;font-size:56px;font-weight:800;letter-spacing:-.035em;line-height:1.2}
+.proj-head h2 .dot{flex:none;width:22px;height:22px;border-radius:50%;border:5px solid var(--mint)}
+.proj-sub{margin:10px 0 0 40px;font-size:22px;font-weight:500;color:var(--muted);letter-spacing:-.01em}
+.proj-grid{display:grid;grid-template-columns:236px minmax(0,1fr);gap:72px;align-items:start}
+.rail{position:sticky;top:92px}
+.rail-facts{margin:0;border-top:2px solid var(--ink)}
+.rail-facts>div{padding:12px 0 13px;border-bottom:1px solid var(--line)}
+.rail-facts dt{font-size:13.5px;font-weight:600;color:var(--muted)}
+.rail-facts dd{margin:2px 0 0;font-size:15.5px;line-height:1.55}
+.rail-facts dd+dd{margin-top:3px}
+.rail-facts .repo{font-size:15px;font-weight:700;color:var(--ink)}
+.rail-note{margin:16px 0 0;font-size:14px;line-height:1.6;color:var(--muted)}
+.rail-toc{margin-top:28px}
+.rail-toc ul{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.rail-toc a{display:block;margin-left:-2px;padding:4px 0 4px 14px;border-left:2px solid transparent;font-size:14.5px;color:var(--muted);text-decoration:none}
+.rail-toc a:hover{color:var(--ink);border-left-color:var(--mint)}
+.proj-main{max-width:720px}
+.proj-main>section+section{margin-top:60px}
+.proj-main h3,.gallery>h3{margin:0 0 16px;font-size:24px;font-weight:800;letter-spacing:-.025em;line-height:1.35}
+.proj-main h4.sub-h{margin:28px 0 12px;font-size:17px;font-weight:700}
+.list{list-style:none;margin:0;padding:0}
+.list>li{position:relative;padding-left:24px;margin:9px 0}
+.list>li::before{content:"";position:absolute;left:2px;top:.86em;width:11px;height:2px;background:var(--mint)}
+.list ul{list-style:none;margin:6px 0 0;padding:0}
+.list ul li{position:relative;padding-left:18px;margin:4px 0;font-size:16px;color:var(--muted)}
+.list ul li::before{content:"";position:absolute;left:2px;top:.8em;width:5px;height:5px;border-radius:50%;background:var(--line-strong)}
+.list strong{font-weight:700}
+.spec{margin:0;border-top:1px solid var(--line)}
+.spec>div{display:grid;grid-template-columns:128px minmax(0,1fr);gap:18px;padding:12px 0;border-bottom:1px solid var(--line)}
+.spec dt{font-size:15px;font-weight:600;color:var(--muted);padding-top:1px}
+.spec dd{margin:0;font-size:16px;line-height:1.7}
+.notes>.note{padding:22px 0;border-top:1px solid var(--line)}
+.notes>.note:last-child{border-bottom:1px solid var(--line)}
+.note h4{margin:0 0 8px;font-size:18px;font-weight:700;letter-spacing:-.015em}
+.note p{margin:0 0 .6em}
+.note p:last-child{margin:0}
+.flow{margin:14px 0 6px;padding:16px 18px;border-radius:8px;background:var(--sunk);font-size:15px}
+.flow-root{margin:0 0 8px;font-weight:600}
+.flow ul{list-style:none;margin:0;padding:0 0 0 14px;border-left:2px solid var(--line-strong)}
+.flow ul>li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:4px 0}
+.env{flex:none;min-width:2.6em;font-weight:700;color:var(--mint-ink)}
+.steps{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 0;list-style:none;margin:0;padding:0}
+.steps li+li::before{content:"→";margin:0 8px;color:var(--muted)}
+
+/* 화면 갤러리 */
+.gallery{margin-top:96px}
+.g-note{margin:0 0 36px;max-width:46em;font-size:15.5px;color:var(--muted)}
+.g-group+.g-group{margin-top:64px}
+.g-group h4{margin:0 0 6px;font-size:18px;font-weight:700;letter-spacing:-.015em}
+.g-group>p{margin:0 0 18px;font-size:15.5px;color:var(--muted)}
+.g-group>h4+.grid,.g-group>h4+.duo{margin-top:16px}
+figure{margin:0}
+figcaption{margin-top:10px;font-size:14.5px;line-height:1.55;color:var(--muted)}
+figcaption .cap{color:var(--ink);font-weight:600}
+.grid{display:grid;gap:32px 24px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.shot{display:block;overflow:hidden;border:1px solid var(--line);border-radius:6px;background:var(--sunk);cursor:zoom-in}
+.shot:hover{border-color:var(--mint)}
+.shot img{display:block;width:100%;height:auto}
+.frame{position:relative}
+.scroller{height:var(--fh,460px);overflow-y:auto;overflow-x:hidden;border:1px solid var(--line);border-radius:6px;background:var(--sunk);scrollbar-width:thin}
+.scroller img{display:block;width:100%;max-width:1000px;height:auto;margin:0 auto;cursor:zoom-in}
+.frame::after{content:"";position:absolute;left:1px;right:1px;bottom:1px;height:44px;border-radius:0 0 5px 5px;background:linear-gradient(to bottom,transparent,var(--sunk));pointer-events:none}
+.cap-row{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 12px}
+.zoom-link{font-size:14px;font-weight:600;white-space:nowrap}
+.duo{--pw:200px;display:grid;grid-template-columns:minmax(0,1fr) var(--pw) var(--pw) var(--pw);gap:28px 22px;align-items:start}
+.duo .scroller{--fh:calc(var(--pw) * 2.164)}
+.aspect .scroller{--fh:auto;height:auto;aspect-ratio:16/10}
+.single{max-width:680px}
+.squares{display:grid;grid-template-columns:repeat(2,minmax(0,360px));gap:24px}
+.g-foot{margin:18px 0 0;font-size:15.5px;color:var(--muted);max-width:44em}
+
+/* 기술 스택 · 일하는 방식 · 연락 */
+.stack.spec>div{grid-template-columns:160px minmax(0,1fr);padding:16px 0}
+.stack dd ul{display:flex;flex-wrap:wrap;gap:4px 22px;list-style:none;margin:0;padding:0}
+.stack dd li{font-size:16.5px}
+.ways{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 56px}
+.way{padding-top:20px;border-top:1px solid var(--line)}
+.way h3{margin:0 0 10px;font-size:21px;font-weight:800;letter-spacing:-.025em}
+.way p{margin:0;max-width:34em}
+.contact-link{margin:0;font-size:32px;font-weight:700;letter-spacing:-.02em}
+.contact-link a{color:var(--ink);text-decoration:none;border-bottom:3px solid var(--mint)}
+.contact-link a:hover{color:var(--mint-ink)}
+.foot{border-top:1px solid var(--line);padding:28px 0 40px;font-size:14.5px;color:var(--muted)}
+.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot a{color:var(--muted)}
+
+/* 라이트박스 */
+dialog.lb{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:rgba(12,16,18,.94);color:#E7ECEC}
+dialog.lb::backdrop{background:rgba(12,16,18,.5)}
+.lb-bar{position:absolute;top:0;left:0;right:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px;padding:0 14px 0 20px;border-bottom:1px solid rgba(255,255,255,.1)}
+.lb-cap{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14.5px;color:#C9D3D4}
+.lb-close{flex:none;height:38px;padding:0 16px;border:1px solid rgba(255,255,255,.35);border-radius:6px;background:transparent;color:#fff;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.lb-close:hover{background:rgba(255,255,255,.08)}
+.lb-close:focus-visible{outline-color:#4FE0C4}
+.lb-body{position:absolute;inset:60px 0 0;overflow:auto;display:flex;padding:20px 16px 32px}
+.lb-body img{display:block;margin:auto;max-width:100%;height:auto}
+.lb[data-fit="contain"] .lb-body img{width:auto;max-height:calc(100dvh - 116px)}
+.lb[data-fit="scroll"] .lb-body{display:block}
+.lb[data-fit="scroll"] .lb-body img{margin:0 auto}
+
+@media (max-width:1080px){
+  .wrap{padding:0 32px}
+  .proj-grid{grid-template-columns:200px minmax(0,1fr);gap:48px}
+  .big{font-size:44px}
+  .duo{--pw:160px}
+  .hero .name{font-size:68px}
+}
+@media (max-width:860px){
+  .route-map{padding-top:0}
+  .stops{grid-template-columns:1fr}
+  .stop{padding:0 0 26px 38px}
+  .stop:last-child{padding-bottom:0}
+  .stop::before{top:6px}
+  .stop.is-transfer::before{top:8px}
+  .stop:not(:last-child)::after{left:6px;right:auto;width:4px;height:auto;top:14px;bottom:-14px;animation-name:draw-y}
+  .loop{position:relative;top:auto;left:auto;width:auto;height:auto;margin:0;padding:30px 0 0 38px;border:0;border-radius:0}
+  .loop::before{content:"";position:absolute;left:7px;top:2px;height:24px;border-left:2px dashed var(--line-strong)}
+  .loop::after{display:none}
+  .loop-text{position:static;transform:none;background:none;padding:0;white-space:normal}
+  .loop-ico{display:inline;margin-right:6px}
+  .metrics{grid-template-columns:1fr 1fr}
+  .metric:nth-child(3){padding-left:0;border-left:0}
+  .metric:nth-child(n+3){border-top:1px solid var(--line);margin-top:16px}
+  .proj-grid{grid-template-columns:1fr;gap:44px}
+  .rail{position:static}
+  .rail-toc{display:none}
+  .rail-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
+  .duo{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .duo>.wide{grid-column:1/-1}
+  .duo .scroller{--fh:460px}
+  .duo .phone .scroller{--fh:auto;height:auto;aspect-ratio:390/844}
+  .ways{grid-template-columns:1fr;gap:28px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  .nav-in{gap:10px;height:56px}
+  .brand{font-size:16px}
+  .nav-links{-webkit-mask-image:linear-gradient(to right,transparent,#000 10px,#000 calc(100% - 18px),transparent);mask-image:linear-gradient(to right,transparent,#000 10px,#000 calc(100% - 18px),transparent)}
+  .nav-links a{padding:8px 9px;font-size:14.5px}
+  .theme{width:36px;height:36px}
+  html{scroll-padding-top:70px}
+  .hero{padding:56px 0 72px}
+  .hero .name{font-size:48px}
+  .hero .role{font-size:20px}
+  .lede{font-size:18px;margin-top:20px}
+  .route{margin-top:52px}
+  .sec{padding:76px 0}
+  .sec-h{font-size:30px;margin-bottom:28px}
+  .facts-top{flex-direction:column;gap:10px}
+  .facts-top div{flex-direction:column;gap:0}
+  .big{font-size:36px}
+  .big small{font-size:16px;margin-left:4px}
+  .metric{padding:18px 0 4px 16px}
+  .proj-head{margin-bottom:40px}
+  .proj-head h2{font-size:38px;gap:14px}
+  .proj-head h2 .dot{width:18px;height:18px;border-width:4px}
+  .proj-sub{margin-left:32px;font-size:18px}
+  .rail-facts{grid-template-columns:1fr}
+  .proj-main h3,.gallery>h3{font-size:21px}
+  .proj-main>section+section{margin-top:48px}
+  .spec>div,.stack.spec>div{grid-template-columns:1fr;gap:2px}
+  .gallery{margin-top:64px}
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .grid{gap:28px}
+  .duo{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 14px}
+  .duo>.wide,.duo>.phone-full{grid-column:1/-1}
+  .duo .scroller{--fh:420px}
+  .duo .phone-full .scroller{--fh:560px;aspect-ratio:auto;height:var(--fh)}
+  .aspect .scroller{aspect-ratio:auto;height:420px}
+  .squares{grid-template-columns:minmax(0,360px)}
+  .contact-link{font-size:24px}
+  .way h3{font-size:19px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">임현택</a>
+    <nav aria-label="섹션 이동">
+      <ul class="nav-links">
+        <li><a href="#overview">한눈에 보기</a></li>
+        <li><a href="#planit">플랜잇</a></li>
+        <li><a href="#insure">전산</a></li>
+        <li><a href="#meta">메타 광고</a></li>
+        <li><a href="#stack">기술 스택</a></li>
+        <li><a href="#ways">일하는 방식</a></li>
+        <li><a href="#contact">연락</a></li>
+      </ul>
+    </nav>
+    <button class="theme" type="button" aria-pressed="false" aria-label="다크 모드" title="다크 모드 켜기·끄기">
+      <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4 7 7M17 17l1.6 1.6M5.4 18.6 7 17M17 7l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="wrap">
+    <h1 id="hero-h"><span class="name">임현택</span><span class="role">풀스택 개발자</span></h1>
+    <p class="lede">TnG 의 사내 보험 전산과 대외 사이트 플랜잇을 설계·구현·배포·운영하고, 피그마 시안 코드화와 메타 광고 운영까지 맡고 있습니다.</p>
+    <a class="gh" href="https://github.com/limHyeonTaek">GitHub @limHyeonTaek</a>
+
+    <figure class="route">
+      <figcaption>광고 클릭에서 사이트 접수, 전산의 고객·상담 케이스까지 한 줄로 이어지도록 계측을 설계했습니다.</figcaption>
+      <div class="route-map">
+        <ol class="stops">
+          <li class="stop" style="--i:0"><a class="stop-name" href="#meta">메타 광고</a><p>Ads MCP 로 캠페인·광고 세트·소재·광고를 코드로 만들고, 광고 URL 에 동적 UTM 을 붙입니다.</p></li>
+          <li class="stop" style="--i:1"><a class="stop-name" href="#planit">플랜잇 랜딩</a><p>Next.js 15 정적 내보내기를 S3 + CloudFront 로 배포합니다.</p></li>
+          <li class="stop is-transfer" style="--i:2"><span class="stop-name">상담 접수</span><p>UTM·referrer 를 접수와 함께 전산으로 보내고, 접수 성공 시 Lead 이벤트를 한 번 보냅니다.</p></li>
+          <li class="stop" style="--i:3"><a class="stop-name" href="#insure">전산</a><p>사이트 접수를 고객·상담 케이스로 자동 생성하고, 유입 매체를 분류하고, 미배정 건을 알립니다.</p></li>
+        </ol>
+        <p class="loop"><span class="loop-text"><span class="loop-ico" aria-hidden="true">↺</span>노출 위치·연령별 결과를 보고 세트 구조와 타깃 수정</span></p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="overview" aria-labelledby="overview-h">
+  <div class="wrap">
+    <h2 class="sec-h" id="overview-h">한눈에 보기</h2>
+    <dl class="facts-top">
+      <div><dt>기간</dt><dd><span class="nw">2026-08-05 ~ 2026-10-23</span> (약 11주)</dd></div>
+      <div><dt>저장소</dt><dd>4개 (Planit, Insurance_backend, Insurance_frontend, Insurance_infra)</dd></div>
+    </dl>
+    <dl class="metrics">
+      <div class="metric">
+        <dt>커밋</dt>
+        <dd class="big">1,867<small>/ 2,453</small></dd>
+        <dd class="sub">세 저장소 합계의 76%</dd>
+        <dd class="bar" aria-hidden="true"><i style="width:76%"></i></dd>
+      </div>
+      <div class="metric">
+        <dt>PR</dt>
+        <dd class="big">648<small>/ 713</small></dd>
+        <dd class="bar" aria-hidden="true"><i style="width:90.9%"></i></dd>
+      </div>
+      <div class="metric">
+        <dt>자동 테스트</dt>
+        <dd class="big"><small class="pre">약</small>6,900<small>건</small></dd>
+        <dd class="bar" aria-hidden="true"><i style="width:65%;background:var(--mint-ink)"></i><i style="width:21.4%;background:var(--seg2)"></i><i style="width:13.6%;background:var(--seg3)"></i></dd>
+        <dd><ul class="legend">
+          <li style="--c:var(--mint-ink)">JUnit 4,475</li>
+          <li style="--c:var(--seg2)">프런트 1,475</li>
+          <li style="--c:var(--seg3)">vitest 932</li>
+        </ul></dd>
+      </div>
+      <div class="metric">
+        <dt>운영 승격</dt>
+        <dd class="big">10<small>차</small></dd>
+        <dd class="sub">dev → 운영</dd>
+        <dd class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></dd>
+      </div>
+    </dl>
+    <p class="overview-note">저장소마다 공동 작업자 1명과 함께 작업했습니다. 업무 저장소는 비공개라 코드 대신 구조와 결정을 정리했습니다.</p>
+  </div>
+</section>
+
+<!-- 플랜잇 -->
+<section class="sec" id="planit" aria-labelledby="planit-h">
+  <div class="wrap">
+    <header class="proj-head">
+      <h2 id="planit-h"><span class="dot" aria-hidden="true"></span>플랜잇</h2>
+      <p class="proj-sub">후불 여행·생활 상담 사이트</p>
+    </header>
+    <div class="proj-grid">
+      <aside class="rail" aria-label="플랜잇 요약">
+        <dl class="rail-facts">
+          <div><dt>기간</dt><dd><span class="nw">2026-08-20</span> ~ 운영 중</dd></div>
+          <div><dt>커밋</dt><dd>350 / 591 (59%)</dd></div>
+          <div><dt>테스트</dt><dd>vitest 932건</dd></div>
+          <div><dt>배포</dt><dd>운영 S3 + CloudFront, dev EC2</dd></div>
+        </dl>
+        <nav class="rail-toc" aria-label="플랜잇 목차">
+          <ul>
+            <li><a href="#planit-overview">개요</a></li>
+            <li><a href="#planit-role">역할</a></li>
+            <li><a href="#planit-stack">스택</a></li>
+            <li><a href="#planit-features">핵심 기능</a></li>
+            <li><a href="#planit-notes">기술적으로 고민한 점</a></li>
+            <li><a href="#planit-shots">화면</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="proj-main">
+        <section aria-labelledby="planit-overview">
+          <h3 id="planit-overview">개요</h3>
+          <p>후불 여행·보험·휴대폰·렌탈 상담을 받는 대외 사이트입니다. 운영 주소는 <a href="https://플랜잇.com">플랜잇.com</a> 입니다.</p>
+          <p>Next.js 15 정적 내보내기를 S3 + CloudFront 로 배포합니다. 피그마 시안을 웹·모바일 두 벌로 옮긴 여행 랜딩 시리즈, 상담 접수 폼, 픽셀·분석 계측을 구현했습니다.</p>
+        </section>
+        <section aria-labelledby="planit-role">
+          <h3 id="planit-role">역할</h3>
+          <ul class="list">
+            <li><strong>페이지 설계·구현:</strong> 홈, 여행 목록·상세, 여행 랜딩 시리즈, 휴대폰·렌탈·인터넷·보험 페이지</li>
+            <li><strong>피그마 시안 코드화:</strong> 웹 1440·모바일 390 두 벌, 스크롤 모션 포함</li>
+            <li><strong>상담 접수 폼과 전산 연동</strong>(접수 API 는 전산 백엔드가 제공)</li>
+            <li><strong>계측:</strong> 메타 픽셀, GA4, Clarity, 네이버 분석, 유입 경로 수집</li>
+            <li><strong>배포·인프라:</strong> GitHub Actions(OIDC) → S3 + CloudFront, CloudFormation</li>
+          </ul>
+        </section>
+        <section aria-labelledby="planit-stack">
+          <h3 id="planit-stack">스택</h3>
+          <dl class="spec">
+            <div><dt>프레임워크</dt><dd>Next.js 15 정적 내보내기(<code>output: 'export'</code>), React 19, TypeScript</dd></div>
+            <div><dt>그래픽</dt><dd>three.js</dd></div>
+            <div><dt>테스트·검증</dt><dd>vitest, 헤드리스 Chrome 시안 대비 픽셀 검증</dd></div>
+            <div><dt>배포</dt><dd>GitHub Actions(OIDC) → S3 + CloudFront(운영), EC2(dev)</dd></div>
+            <div><dt>인프라</dt><dd>CloudFormation</dd></div>
+            <div><dt>연동</dt><dd>카카오 JS SDK, 메타 픽셀, GA4, Microsoft Clarity, 네이버 분석</dd></div>
+          </dl>
+        </section>
+        <section aria-labelledby="planit-features">
+          <h3 id="planit-features">핵심 기능</h3>
+          <ul class="list">
+            <li><strong>홈 랜딩</strong>과 <strong>여행 목록·상세</strong></li>
+            <li><strong>여행 랜딩 시리즈:</strong> 피그마 시안을 웹 1440·모바일 390 두 벌로 1:1 코드화하고 스크롤 모션을 붙였습니다.
+              <ul>
+                <li><span class="nw">LP-01</span> 원페이지 상담, <span class="nw">LP-02</span> 후불여행, <span class="nw">LP-03</span> 동남아 월 가격, <span class="nw">LP-04</span> 신혼여행, <span class="nw">LP-06</span> 우정여행</li>
+                <li>카테고리별 정적 경로 <code>/travel/lp/&lt;slug&gt;/</code> 10개</li>
+              </ul>
+            </li>
+            <li><strong>상담 접수 폼:</strong> 생년월일·납부 방식 등 전 항목 필수, 개인정보 동의 문구는 버전으로 관리</li>
+            <li><strong>휴대폰 비교·견적</strong>, <strong>렌탈·인터넷·보험</strong> 페이지</li>
+            <li><strong>테마 페이지 영상 히어로:</strong> 여러 테마 페이지가 쓰는 공용 컴포넌트</li>
+            <li><strong>카카오톡 공유:</strong> 투표 카드를 피드 메시지로 보내고, 실패하면 <code>navigator.share</code> → 클립보드 순서로 대체</li>
+            <li><strong>계측:</strong> 메타 픽셀 Lead, GA4·Clarity·네이버 분석, UTM·referrer 수집 → 전산 매체 분류</li>
+          </ul>
+        </section>
+        <section aria-labelledby="planit-notes">
+          <h3 id="planit-notes">기술적으로 고민한 점</h3>
+          <div class="notes">
+            <article class="note">
+              <h4>정적 내보내기와 랜딩 페이지의 공존</h4>
+              <p>서버 없이 S3 + CloudFront 로 서비스하려고 <code>output: 'export'</code> 를 썼습니다. 요청 시점 렌더링이 없으므로 랜딩 경로는 카테고리별 정적 경로 10개(<code>/travel/lp/&lt;slug&gt;/</code>)로 빌드 때 미리 만듭니다.</p>
+              <p>상담 접수처럼 서버가 필요한 동작은 전산 백엔드의 플랜잇 API 로 넘겨, 사이트 자체는 정적 파일로만 유지합니다.</p>
+            </article>
+            <article class="note">
+              <h4>메타 픽셀 Lead 중복 제거</h4>
+              <p>Lead 이벤트는 광고 최적화의 학습 신호입니다. 버튼을 누른 시점이 아니라 서버가 접수 성공을 응답한 뒤에만 한 번 보내고, eventID 를 함께 보내 같은 접수가 두 번 집계되지 않게 했습니다.</p>
+            </article>
+            <article class="note">
+              <h4>카카오 SDK 초기화 순서와 폴백</h4>
+              <p>카카오 JS SDK 는 외부 스크립트라 로드가 끝나기 전에 공유 버튼이 눌릴 수 있습니다. SDK 로드 → 초기화 → 공유 호출 순서를 지키고, SDK 를 쓸 수 없는 환경에서는 <code>navigator.share</code>, 그것도 없으면 클립보드 복사로 이어지게 했습니다.</p>
+            </article>
+            <article class="note">
+              <h4>빌드 변수로 분석 ID 주입, dev 제외</h4>
+              <p>픽셀·GA4·Clarity·네이버 분석 ID 는 코드에 적지 않고 빌드 변수로 주입합니다. dev 빌드에서는 분석 스크립트를 넣지 않는 규칙을 둬 테스트 트래픽이 운영 데이터에 섞이지 않게 했습니다.</p>
+            </article>
+            <article class="note">
+              <h4>시안과 픽셀 단위로 맞추는 검증</h4>
+              <p>피그마 MCP 로 시안의 수치를 읽어 옮긴 뒤, 헤드리스 Chrome 으로 1440·390 화면을 캡처해 같은 폭의 시안과 구간별로 비교합니다. 어긋난 구간을 찾아 고치고 다시 캡처하는 과정을 반복합니다.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="gallery" aria-labelledby="planit-shots">
+      <h3 id="planit-shots">화면</h3>
+      <p class="g-note">헤드리스 Chrome 으로 캡처했습니다(데스크톱 1440, 모바일 390). 전체 페이지 캡처는 하단 회사 정보 영역을 잘라 냈습니다. 이미지를 누르면 크게 볼 수 있습니다.</p>
+
+      <div class="g-group">
+        <h4>여행 랜딩 첫 화면</h4>
+        <div class="grid grid-2">
+          <figure><a class="shot" href="assets/planit-lp06-fold.webp" data-zoom data-fit="contain"><img src="assets/planit-lp06-fold.webp" alt="LP-06 우정여행 랜딩 첫 화면" width="1440" height="900" loading="lazy" decoding="async"></a><figcaption><span class="cap">LP-06 우정여행</span></figcaption></figure>
+          <figure><a class="shot" href="assets/planit-lp04-fold.webp" data-zoom data-fit="contain"><img src="assets/planit-lp04-fold.webp" alt="LP-04 신혼여행 랜딩 첫 화면" width="1440" height="900" loading="lazy" decoding="async"></a><figcaption><span class="cap">LP-04 신혼여행</span></figcaption></figure>
+          <figure><a class="shot" href="assets/planit-lp03-fold.webp" data-zoom data-fit="contain"><img src="assets/planit-lp03-fold.webp" alt="LP-03 동남아 월 가격 랜딩 첫 화면" width="1440" height="900" loading="lazy" decoding="async"></a><figcaption><span class="cap">LP-03 동남아 월 가격</span></figcaption></figure>
+          <figure><a class="shot" href="assets/planit-theme-friends-fold.webp" data-zoom data-fit="contain"><img src="assets/planit-theme-friends-fold.webp" alt="우정여행 테마 페이지 영상 히어로" width="1440" height="900" loading="lazy" decoding="async"></a><figcaption><span class="cap">우정여행 테마 페이지(영상 히어로)</span></figcaption></figure>
+        </div>
+      </div>
+
+      <div class="g-group">
+        <h4>LP-06 우정여행, 웹·모바일 두 벌</h4>
+        <p>같은 시안을 웹 1440·모바일 390 두 벌로 옮겼습니다. 전체 페이지는 칸 안에서 스크롤해 볼 수 있습니다.</p>
+        <div class="duo">
+          <figure class="wide">
+            <div class="frame"><div class="scroller" tabindex="0" role="region" aria-label="LP-06 우정여행 데스크톱 전체 페이지, 스크롤해서 보기"><img src="assets/planit-lp06-desktop-full.webp" data-zoom="assets/planit-lp06-desktop-full.webp" data-fit="scroll" alt="LP-06 우정여행 데스크톱 전체 페이지" width="1000" height="4988" loading="lazy" decoding="async"></div></div>
+            <figcaption class="cap-row"><span class="cap">데스크톱 전체 페이지</span><a class="zoom-link" href="assets/planit-lp06-desktop-full.webp" data-zoom data-fit="scroll">크게 보기</a></figcaption>
+          </figure>
+          <figure class="phone phone-full">
+            <div class="frame"><div class="scroller" tabindex="0" role="region" aria-label="LP-06 우정여행 모바일 전체 페이지, 스크롤해서 보기"><img src="assets/planit-lp06-mobile-full.webp" data-zoom="assets/planit-lp06-mobile-full.webp" data-fit="scroll" alt="LP-06 우정여행 모바일 전체 페이지" width="390" height="7074" loading="lazy" decoding="async"></div></div>
+            <figcaption class="cap-row"><span class="cap">모바일 전체 페이지</span><a class="zoom-link" href="assets/planit-lp06-mobile-full.webp" data-zoom data-fit="scroll">크게 보기</a></figcaption>
+          </figure>
+          <figure class="phone">
+            <a class="shot" href="assets/planit-lp06-mobile-fold.webp" data-zoom data-fit="contain"><img src="assets/planit-lp06-mobile-fold.webp" alt="LP-06 모바일 첫 화면" width="390" height="844" loading="lazy" decoding="async"></a>
+            <figcaption><span class="cap">모바일 첫 화면</span></figcaption>
+          </figure>
+          <figure class="phone">
+            <a class="shot" href="assets/planit-share-vote-390.webp" data-zoom data-fit="contain"><img src="assets/planit-share-vote-390.webp" alt="LP-06 단톡방 투표 카드와 카카오톡 공유 버튼" width="390" height="844" loading="lazy" decoding="async"></a>
+            <figcaption><span class="cap">단톡방 투표 카드와 카카오톡 공유 버튼</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="g-group">
+        <h4>그 밖의 화면</h4>
+        <div class="grid grid-2">
+          <figure><a class="shot" href="assets/planit-home-fold.webp" data-zoom data-fit="contain"><img src="assets/planit-home-fold.webp" alt="플랜잇 홈 첫 화면" width="1440" height="900" loading="lazy" decoding="async"></a><figcaption><span class="cap">홈</span></figcaption></figure>
+          <figure><a class="shot" href="assets/planit-travel-fold.webp" data-zoom data-fit="contain"><img src="assets/planit-travel-fold.webp" alt="여행 목록 첫 화면" width="1440" height="900" loading="lazy" decoding="async"></a><figcaption><span class="cap">여행 목록</span></figcaption></figure>
+          <figure><a class="shot" href="assets/planit-phone-fold.webp" data-zoom data-fit="contain"><img src="assets/planit-phone-fold.webp" alt="휴대폰 페이지 첫 화면" width="1440" height="900" loading="lazy" decoding="async"></a><figcaption><span class="cap">휴대폰 페이지</span></figcaption></figure>
+          <figure class="aspect">
+            <div class="frame"><div class="scroller" tabindex="0" role="region" aria-label="LP-04 신혼여행 데스크톱 전체 페이지, 스크롤해서 보기"><img src="assets/planit-lp04-desktop-full.webp" data-zoom="assets/planit-lp04-desktop-full.webp" data-fit="scroll" alt="LP-04 신혼여행 데스크톱 전체 페이지" width="1000" height="4241" loading="lazy" decoding="async"></div></div>
+            <figcaption class="cap-row"><span class="cap">LP-04 신혼여행 데스크톱 전체 페이지</span><a class="zoom-link" href="assets/planit-lp04-desktop-full.webp" data-zoom data-fit="scroll">크게 보기</a></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+<!-- 사내 보험 전산 -->
+<section class="sec" id="insure" aria-labelledby="insure-h">
+  <div class="wrap">
+    <header class="proj-head">
+      <h2 id="insure-h"><span class="dot" aria-hidden="true"></span>TnG INSURE</h2>
+      <p class="proj-sub">사내 보험 전산</p>
+    </header>
+    <div class="proj-grid">
+      <aside class="rail" aria-label="TnG INSURE 저장소 요약">
+        <dl class="rail-facts">
+          <div><dt class="repo">Insurance_backend</dt><dd>Spring Boot API 서버</dd><dd><span class="nw">2026-08-05</span> 시작</dd><dd>커밋 754 / 971 (78%)</dd><dd>JUnit 4,475건</dd><dd>Java 약 25만 줄(이 중 절반이 테스트), Flyway 마이그레이션 90개</dd></div>
+          <div><dt class="repo">Insurance_frontend</dt><dd>웹 어드민 「TnG INSURE」</dd><dd><span class="nw">2026-08-10</span> 시작</dd><dd>커밋 763 / 891 (86%)</dd><dd>테스트 1,475건</dd><dd>TypeScript 약 5.4만 줄</dd></div>
+          <div><dt class="repo">Insurance_infra</dt><dd>Terraform 설계 초안 18개 파일</dd></div>
+        </dl>
+        <nav class="rail-toc" aria-label="TnG INSURE 목차">
+          <ul>
+            <li><a href="#insure-overview">개요</a></li>
+            <li><a href="#insure-role">역할</a></li>
+            <li><a href="#insure-stack">스택</a></li>
+            <li><a href="#insure-features">핵심 기능</a></li>
+            <li><a href="#insure-notes">기술적으로 고민한 점</a></li>
+            <li><a href="#insure-shots">화면</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="proj-main">
+        <section aria-labelledby="insure-overview">
+          <h3 id="insure-overview">개요</h3>
+          <p>보험·휴대폰·인터넷·렌탈·여행 5개 업종의 고객과 상담을 한곳에서 관리하는 사내 전산입니다.</p>
+          <p>Spring Boot 백엔드가 전산 API 와 대외 사이트 플랜잇의 API 를 함께 제공하고, React 웹 어드민 <span class="nw">「TnG INSURE」가</span> 사내 화면을 맡습니다.</p>
+        </section>
+        <section aria-labelledby="insure-role">
+          <h3 id="insure-role">역할</h3>
+          <ul class="list">
+            <li>도메인 설계와 API 구현, DB 스키마·마이그레이션 관리</li>
+            <li>웹 어드민 화면 구현, 피그마 시안 적용, 모바일·다크모드 대응</li>
+            <li>CI/CD 구성과 dev·운영 배포, dev → 운영 승격 관리</li>
+            <li>플랜잇 사이트 접수를 전산 업무로 잇는 동기화와 알림</li>
+          </ul>
+        </section>
+        <section aria-labelledby="insure-stack">
+          <h3 id="insure-stack">스택</h3>
+          <dl class="spec">
+            <div><dt>백엔드</dt><dd>Java 17, Spring Boot 3.5, PostgreSQL, Redis, Flyway, JWT</dd></div>
+            <div><dt>프런트엔드</dt><dd>React 19, vinext(Vite 8 SSR), Tailwind CSS 4, Tiptap, TypeScript</dd></div>
+            <div><dt>저장소·연동</dt><dd>S3/MinIO, 웹푸시, CalDAV, PortOne·Toss 결제, Mattermost(자체 운영)</dd></div>
+            <div><dt>배포</dt><dd>GitHub Actions, Docker Compose + Caddy(dev EC2), ECR → ECS(운영)</dd></div>
+            <div><dt>인프라 설계</dt><dd>Terraform(VPC·ALB·RDS 초안)</dd></div>
+          </dl>
+        </section>
+        <section aria-labelledby="insure-features">
+          <h3 id="insure-features">핵심 기능</h3>
+          <h4 class="sub-h">백엔드 도메인</h4>
+          <dl class="spec">
+            <div><dt>인증·조직</dt><dd>JWT 인증, 조직, 역할별 권한</dd></div>
+            <div><dt>고객·상담</dt><dd>고객, 상담 케이스(보험·휴대폰·인터넷·렌탈·여행 5개 업종)</dd></div>
+            <div><dt>계약·정산</dt><dd>보험계약 원장, 매출, 수수료, 대시보드</dd></div>
+            <div><dt>소통</dt><dd>공지, 알림, 녹취, 메신저</dd></div>
+            <div><dt>일정·근태</dt><dd>캘린더(CalDAV), 근태</dd></div>
+            <div><dt>결제·포인트</dt><dd>포인트, PortOne·Toss 결제</dd></div>
+            <div><dt>단가</dt><dd>휴대폰·렌탈 단가표</dd></div>
+            <div><dt>사이트 연동</dt><dd>사이트 접수 → 고객·케이스 자동 생성, 유입 매체 분류, 미배정 알림</dd></div>
+          </dl>
+          <h4 class="sub-h">웹 어드민 화면</h4>
+          <ul class="list">
+            <li>RSA 암호화·2단계 로그인</li>
+            <li>고객·상담 케이스 관리</li>
+            <li>보험계약 엑셀 임포트</li>
+            <li>매출·수수료 화면</li>
+            <li>역할별 권한</li>
+            <li>캘린더, 근태</li>
+            <li>모바일 대응, 다크모드</li>
+            <li>피그마 시안 적용</li>
+          </ul>
+        </section>
+        <section aria-labelledby="insure-notes">
+          <h3 id="insure-notes">기술적으로 고민한 점</h3>
+          <div class="notes">
+            <article class="note">
+              <h4>제외 집합으로 관리하는 dev → 운영 승격</h4>
+              <p>dev 에는 기능이 계속 쌓이지만, 모든 기능이 같은 시점에 운영에 올라가지는 않습니다.</p>
+              <p>승격할 때마다 <code>promote/&lt;날짜&gt;</code> 브랜치를 만들고, 아직 운영에 올리지 않을 기능의 파일을 <strong>제외 집합</strong>(백엔드 146개·프런트엔드 54개 파일)으로 묶어 빼고 올립니다.</p>
+              <p>운영에 올릴 범위를 승격 시점에 고를 수 있고, 이 방식으로 10차 승격까지 진행했습니다.</p>
+            </article>
+            <article class="note">
+              <h4>사이트 접수를 전산 업무로 바꾸는 동기화</h4>
+              <p>플랜잇 사이트의 접수(<code>site_inquiry</code>)는 그대로 두면 상담 업무로 이어지지 않습니다.</p>
+              <p>접수가 들어오면 고객과 상담 케이스를 자동으로 만들고, UTM·referrer 로 유입 매체를 분류합니다.</p>
+              <p>담당자가 정해지지 않은 접수는 인앱 알림·웹푸시·Mattermost 로 알려 놓치지 않게 했습니다.</p>
+            </article>
+            <article class="note">
+              <h4>환경별로 다른 배포 경로</h4>
+              <p>dev 는 EC2 한 대에서 docker compose 와 Caddy 로 빠르게 반영하고, 운영은 ECR 이미지를 ECS 에 배포한 뒤 헬스체크로 확인합니다.</p>
+              <div class="flow" role="group" aria-label="배포 흐름">
+                <p class="flow-root"><code>ci.yml</code> (테스트)</p>
+                <ul>
+                  <li><span class="env">dev</span><ol class="steps"><li><code>deploy-dev.yml</code></li><li>EC2 · docker compose + Caddy</li></ol></li>
+                  <li><span class="env">운영</span><ol class="steps"><li><code>deploy-prod.yml</code></li><li>ECR 이미지</li><li>ECS 배포</li><li>헬스체크</li></ol></li>
+                </ul>
+              </div>
+              <p>두 경로 모두 <code>ci.yml</code> 테스트를 통과한 코드만 받습니다. Terraform 저장소는 VPC·ALB·RDS 설계 초안 단계이며, 운영 배포는 GitHub Actions 파이프라인이 맡습니다.</p>
+            </article>
+            <article class="note">
+              <h4>테스트 비중</h4>
+              <p>백엔드 Java 코드의 절반이 테스트이고 JUnit 4,475건, 프런트엔드 테스트 1,475건이 있습니다.</p>
+              <p>업종 5개와 역할별 권한이 얽힌 도메인이라 기능을 더할 때 기존 동작이 깨지지 않았는지 테스트로 먼저 확인합니다.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="gallery" aria-labelledby="insure-shots">
+      <h3 id="insure-shots">화면</h3>
+      <figure class="single">
+        <a class="shot" href="assets/insurance-login.webp" data-zoom data-fit="contain"><img src="assets/insurance-login.webp" alt="사내 전산 로그인 화면" width="1440" height="900" loading="lazy" decoding="async"></a>
+        <figcaption><span class="cap">로그인 화면</span> 사내 시스템이라 공개 가능한 로그인 화면만 싣습니다.</figcaption>
+      </figure>
+    </section>
+  </div>
+</section>
+
+<!-- 메타 광고 -->
+<section class="sec" id="meta" aria-labelledby="meta-h">
+  <div class="wrap">
+    <header class="proj-head">
+      <h2 id="meta-h"><span class="dot" aria-hidden="true"></span>메타 광고 운영</h2>
+      <p class="proj-sub">코드로 만들고 전산으로 추적하는 광고</p>
+    </header>
+    <div class="proj-grid">
+      <aside class="rail" aria-label="메타 광고 운영 요약">
+        <dl class="rail-facts">
+          <div><dt>채널</dt><dd>페이스북·인스타그램</dd></div>
+          <div><dt>최적화</dt><dd>픽셀 Lead 전환</dd></div>
+          <div><dt>유입 추적</dt><dd>동적 UTM, 전산 유입 매체 분류</dd></div>
+        </dl>
+        <p class="rail-note">금액·성과 수치와 계정·픽셀 식별자는 싣지 않습니다. 구조와 운영 방식만 설명합니다.</p>
+        <nav class="rail-toc" aria-label="메타 광고 운영 목차">
+          <ul>
+            <li><a href="#meta-overview">개요</a></li>
+            <li><a href="#meta-role">역할</a></li>
+            <li><a href="#meta-tools">도구</a></li>
+            <li><a href="#meta-ops">핵심 운영 방식</a></li>
+            <li><a href="#meta-notes">기술적으로 고민한 점</a></li>
+            <li><a href="#meta-shots">화면</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <div class="proj-main">
+        <section aria-labelledby="meta-overview">
+          <h3 id="meta-overview">개요</h3>
+          <p>플랜잇 사이트로 상담 접수를 모으기 위한 메타(페이스북·인스타그램) 광고 운영입니다.</p>
+          <p><strong>메타 공식 Ads MCP</strong> 로 캠페인·광고 세트·소재·광고를 코드로 생성·분석·조정합니다.</p>
+          <p>광고 클릭에서 사이트 접수, 전산의 고객·상담 케이스까지 한 줄로 이어지도록 계측을 설계했습니다.</p>
+        </section>
+        <section aria-labelledby="meta-role">
+          <h3 id="meta-role">역할</h3>
+          <ul class="list">
+            <li><strong>캠페인 구조 설계:</strong> 전환 목표, 광고 세트 분리 기준, 노출 위치·연령 설정</li>
+            <li><strong>소재·카피:</strong> 페르소나 문서 기반 타깃과 문구, 표현 규칙 점검, 소재 등록</li>
+            <li><strong>계측:</strong> 메타 픽셀 Lead 이벤트(사이트 코드), 동적 UTM, 전산 유입 매체 분류(백엔드 코드)</li>
+            <li><strong>분석·조정:</strong> 노출 위치·연령별 결과를 보고 세트 구조와 타깃 수정</li>
+          </ul>
+        </section>
+        <section aria-labelledby="meta-tools">
+          <h3 id="meta-tools">도구</h3>
+          <dl class="spec">
+            <div><dt>광고 운영</dt><dd>메타 공식 Ads MCP(캠페인·광고 세트·소재·광고 생성과 인사이트 조회), Claude Code</dd></div>
+            <div><dt>전환 신호</dt><dd>메타 픽셀 Lead 이벤트(접수 성공 시 1회, eventID 중복 제거)</dd></div>
+            <div><dt>유입 추적</dt><dd>동적 UTM, 전산 유입 매체 분류(ig/fb, 광고, 노출 위치)</dd></div>
+            <div><dt>소재</dt><dd>정사각(1080)·세로(1080x1920) 두 규격, S3 에 올린 뒤 URL 로 등록</dd></div>
+            <div><dt>기준 문서</dt><dd>페르소나 문서 6종, 표현 금지 규칙</dd></div>
+          </dl>
+        </section>
+        <section aria-labelledby="meta-ops">
+          <h3 id="meta-ops">핵심 운영 방식</h3>
+          <ul class="list">
+            <li><strong>코드로 광고 생성:</strong> 캠페인 → 광고 세트 → 소재 → 광고 순서로 MCP 도구를 호출해 만들고, 같은 경로로 인사이트를 조회해 조정합니다.</li>
+            <li><strong>Lead 전환 최적화:</strong> 플랜잇 픽셀의 Lead 이벤트를 최적화 목표로 씁니다. 이벤트는 사이트에서 상담 접수가 성공했을 때만 한 번 발생합니다.</li>
+            <li><strong>페르소나 기반 타깃·카피:</strong> 여행 목적별 페르소나 문서 6종을 기준으로 타깃과 문구를 정합니다.</li>
+            <li><strong>표현 규칙:</strong> 「무이자」「0원」「최저가」는 쓰지 않습니다. 조건이 붙는 가격은 「1인」「개월」을 함께 적습니다.</li>
+            <li><strong>동적 UTM:</strong> 새 광고에는 <code>utm_source={{site_source_name}}</code> 를 비롯해 노출 위치(<code>{{placement}}</code>)·광고 이름(<code>{{ad.name}}</code>) 같은 동적 값을 반드시 붙입니다.</li>
+            <li><strong>세트 구조 조정:</strong> 노출 위치·연령 분석 결과로 Audience Network 를 제외하고, 연령을 고정하고, 피드와 릴스를 별도 세트로 나눴습니다.</li>
+          </ul>
+        </section>
+        <section aria-labelledby="meta-notes">
+          <h3 id="meta-notes">기술적으로 고민한 점</h3>
+          <div class="notes">
+            <article class="note">
+              <h4>광고와 실제 접수 건을 잇는 추적</h4>
+              <p>광고 관리자의 전환 수만으로는 어떤 접수가 어느 광고에서 왔는지 전산에서 알 수 없습니다.</p>
+              <p>그래서 동적 UTM 을 광고 URL 에 붙이고, 사이트가 UTM·referrer 를 접수와 함께 전산으로 보내도록 했습니다.</p>
+              <p>전산은 이 값으로 유입 매체(ig/fb)를 분류하고 광고 이름·노출 위치까지 기록합니다.</p>
+            </article>
+            <article class="note">
+              <h4>학습 신호로 쓸 수 있는 Lead 이벤트</h4>
+              <p>최적화 목표가 Lead 이므로 이벤트가 빠지거나 두 번 잡히면 학습이 흔들립니다.</p>
+              <p>Lead 는 서버가 접수 성공을 응답한 뒤에만 한 번 보내고, eventID 를 붙여 같은 접수가 중복 집계되지 않게 했습니다.</p>
+            </article>
+            <article class="note">
+              <h4>노출 위치·연령 분석에 따른 세트 재구성</h4>
+              <p>노출 위치·연령별 결과를 나눠 본 뒤 Audience Network 제외, 연령 고정, 피드·릴스 세트 분리로 구조를 바꿨습니다.</p>
+              <p>소재는 피드용 정사각(1080)과 릴스용 세로(1080x1920) 두 규격으로 준비합니다.</p>
+            </article>
+            <article class="note">
+              <h4>광고 문구의 표현 규칙</h4>
+              <p>후불 여행은 월 납부 금액이 눈에 띄는 상품이라 오해를 부르는 표현이 생기기 쉽습니다.</p>
+              <p>「무이자」「0원」「최저가」는 금지하고, 조건부 가격에는 「1인」「개월」과 적용 조건을 함께 적는 규칙을 두고 카피를 쓸 때마다 점검합니다.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section class="gallery" aria-labelledby="meta-shots">
+      <h3 id="meta-shots">화면</h3>
+      <div class="g-group">
+        <h4>우정여행 소재 예시</h4>
+        <div class="squares">
+          <figure><a class="shot" href="assets/meta-ad-friendship-chat.webp" data-zoom data-fit="contain"><img src="assets/meta-ad-friendship-chat.webp" alt="우정여행 광고 소재, 단톡방 대화 형식" width="720" height="720" loading="lazy" decoding="async"></a><figcaption><span class="cap">대화형 소재</span></figcaption></figure>
+          <figure><a class="shot" href="assets/meta-ad-friendship-calendar.webp" data-zoom data-fit="contain"><img src="assets/meta-ad-friendship-calendar.webp" alt="우정여행 광고 소재, 네 명이 함께 쉬는 날 달력" width="720" height="720" loading="lazy" decoding="async"></a><figcaption><span class="cap">달력형 소재</span></figcaption></figure>
+        </div>
+        <p class="g-foot">두 소재 모두 가격 옆에 「1인」「36개월」「제휴카드 할인 적용가」 조건을 함께 적었습니다.</p>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section class="sec" id="stack" aria-labelledby="stack-h">
+  <div class="wrap">
+    <h2 class="sec-h" id="stack-h">기술 스택</h2>
+    <dl class="spec stack">
+      <div><dt>백엔드</dt><dd><ul><li>Java 17</li><li>Spring Boot 3.5</li><li>PostgreSQL</li><li>Redis</li><li>Flyway</li><li>JWT</li></ul></dd></div>
+      <div><dt>프런트엔드</dt><dd><ul><li>TypeScript</li><li>React 19</li><li>Next.js 15</li><li>vinext(Vite 8)</li><li>Tailwind CSS 4</li><li>Tiptap</li><li>three.js</li></ul></dd></div>
+      <div><dt>인프라</dt><dd><ul><li>AWS ECS·ECR·EC2·S3·CloudFront</li><li>CloudFormation</li><li>Terraform</li><li>Docker Compose</li><li>Caddy</li><li>GitHub Actions</li></ul></dd></div>
+      <div><dt>도구</dt><dd><ul><li>JUnit</li><li>vitest</li><li>헤드리스 Chrome</li><li>Figma MCP</li><li>Meta Ads MCP</li><li>Claude Code</li></ul></dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="ways" aria-labelledby="ways-h">
+  <div class="wrap">
+    <h2 class="sec-h" id="ways-h">일하는 방식</h2>
+    <div class="ways">
+      <article class="way">
+        <h3>피그마 → 코드</h3>
+        <p>피그마 MCP 로 시안을 읽어 웹 1440·모바일 390 두 벌로 구현하고, 헤드리스 Chrome 캡처를 시안과 픽셀 단위로 비교합니다.</p>
+      </article>
+      <article class="way">
+        <h3>dev → 운영 승격</h3>
+        <p><code>promote/&lt;날짜&gt;</code> 브랜치를 만들고, 아직 올리지 않을 기능은 제외 집합으로 묶어 빼고 승격합니다.</p>
+      </article>
+      <article class="way">
+        <h3>테스트·검증</h3>
+        <p>전산은 CI 테스트 뒤에 배포하고 운영 배포 후 헬스체크로 확인합니다. 화면은 헤드리스 Chrome 캡처로 시안과 대조합니다.</p>
+      </article>
+      <article class="way">
+        <h3>AI 도구 활용</h3>
+        <p>Claude Code 로 작업을 서브에이전트에 나눠 맡기고, PR 리뷰와 배포 검증까지 개발 흐름에 넣었습니다.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <h2 class="sec-h" id="contact-h">연락</h2>
+    <p class="contact-link"><a href="https://github.com/limHyeonTaek">GitHub @limHyeonTaek</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>임현택, 풀스택 개발자</p>
+    <a href="#top">맨 위로</a>
+  </div>
+</footer>
+
+<dialog class="lb" id="lightbox" aria-labelledby="lb-cap">
+  <div class="lb-bar">
+    <p class="lb-cap" id="lb-cap"></p>
+    <button class="lb-close" type="button" autofocus>닫기</button>
+  </div>
+  <div class="lb-body"><img id="lb-img" alt=""></div>
+</dialog>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  /* 라이트·다크 전환: 고른 값만 저장하고, 고르지 않았으면 시스템 설정을 따릅니다. */
+  var btn = document.querySelector('.theme');
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  function current() { return root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); }
+  function sync() { btn.setAttribute('aria-pressed', String(current() === 'dark')); }
+  sync();
+  if (mq.addEventListener) mq.addEventListener('change', sync);
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    sync();
+  });
+
+  /* 노선도는 처음 한 번만 그려지고, 다 그린 뒤에는 애니메이션을 걷어 끝 상태로 고정합니다. */
+  var route = document.querySelector('.route');
+  if (route) setTimeout(function () { route.classList.add('is-done'); }, 2200);
+
+  /* 지금 읽는 섹션을 상단 내비게이션에 표시 */
+  var strip = document.querySelector('.nav-links');
+  var links = Array.prototype.slice.call(strip.querySelectorAll('a'));
+  function setActive(id) {
+    if (!strip.querySelector('a[href="#' + id + '"]') && strip.scrollLeft) strip.scrollTo({ left: 0, behavior: 'smooth' });
+    links.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + id;
+      if (on) {
+        a.setAttribute('aria-current', 'location');
+        var l = a.offsetLeft, r = l + a.offsetWidth;
+        if (l < strip.scrollLeft || r > strip.scrollLeft + strip.clientWidth) strip.scrollTo({ left: Math.max(0, l - 16), behavior: 'smooth' });
+      } else a.removeAttribute('aria-current');
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting && !atBottom()) setActive(e.target.id); });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    document.querySelectorAll('main > section[id]').forEach(function (s) { io.observe(s); });
+  }
+  /* 맨 아래에서는 마지막 섹션(연락)이 기준선에 닿지 못하므로 따로 표시 */
+  function atBottom() { return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4; }
+  window.addEventListener('scroll', function () { if (atBottom()) setActive('contact'); }, { passive: true });
+
+  /* 이미지 크게 보기 */
+  var dlg = document.getElementById('lightbox');
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+  var lbImg = document.getElementById('lb-img');
+  var lbCap = document.getElementById('lb-cap');
+  var body = dlg.querySelector('.lb-body');
+  var opener = null;
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-zoom]');
+    if (!t || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    var fig = t.closest('figure');
+    var img = fig.querySelector('img');
+    opener = t.tagName === 'IMG' ? (fig.querySelector('a[data-zoom]') || t) : t;
+    lbImg.src = t.getAttribute('href') || t.getAttribute('data-zoom');
+    lbImg.alt = img.alt;
+    var cap = fig.querySelector('.cap');
+    lbCap.textContent = img.alt || (cap ? cap.textContent : '');
+    dlg.setAttribute('data-fit', t.getAttribute('data-fit') || 'contain');
+    dlg.showModal();
+    body.scrollTop = 0;
+  });
+  dlg.querySelector('.lb-close').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target === body) dlg.close(); });
+  dlg.addEventListener('close', function () {
+    lbImg.removeAttribute('src');
+    if (opener && opener.focus) opener.focus({ preventScroll: true });
+  });
+})();
+</script>
+</body>
+</html>
