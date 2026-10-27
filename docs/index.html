@@ -365,29 +365,31 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
   <div class="wrap">
     <h2 class="sec-h" id="overview-h">한눈에 보기</h2>
     <dl class="facts-top">
-      <div><dt>기간</dt><dd><span class="nw">2026-08-05 ~ 2026-10-23</span> (약 11주)</dd></div>
+      <div><dt>기간</dt><dd><span class="nw">2026-08-05 ~ 2026-10-27</span> (약 12주)</dd></div>
       <div><dt>저장소</dt><dd>4개 (Planit, Insurance_backend, Insurance_frontend, Insurance_infra)</dd></div>
     </dl>
+    <!-- 수치 기준(2026-10-27): 커밋 = 저장소별 git shortlog -sne --all 본인/전체(세 저장소 합), PR = gh pr list --state all 작성자 본인/전체,
+         테스트 = origin/dev 소스의 테스트 케이스 수(백엔드 @Test · 프런트 tests/*.mjs 의 test( · Planit *.test.ts(x) 의 it(), 운영 승격 = 전산 promote 브랜치 차수. README 주석 참고. -->
     <dl class="metrics">
       <div class="metric">
         <dt>커밋</dt>
-        <dd class="big">1,867<small>/ 2,453</small></dd>
+        <dd class="big">1,889<small>/ 2,475</small></dd>
         <dd class="sub">세 저장소 합계의 76%</dd>
-        <dd class="bar" aria-hidden="true"><i style="width:76%"></i></dd>
+        <dd class="bar" aria-hidden="true"><i style="width:76.3%"></i></dd>
       </div>
       <div class="metric">
         <dt>PR</dt>
-        <dd class="big">648<small>/ 713</small></dd>
-        <dd class="bar" aria-hidden="true"><i style="width:90.9%"></i></dd>
+        <dd class="big">660<small>/ 725</small></dd>
+        <dd class="bar" aria-hidden="true"><i style="width:91%"></i></dd>
       </div>
       <div class="metric">
         <dt>자동 테스트</dt>
-        <dd class="big"><small class="pre">약</small>6,900<small>건</small></dd>
-        <dd class="bar" aria-hidden="true"><i style="width:65%;background:var(--mint-ink)"></i><i style="width:21.4%;background:var(--seg2)"></i><i style="width:13.6%;background:var(--seg3)"></i></dd>
+        <dd class="big"><small class="pre">약</small>8,000<small>건</small></dd>
+        <dd class="bar" aria-hidden="true"><i style="width:56.1%;background:var(--mint-ink)"></i><i style="width:22.9%;background:var(--seg2)"></i><i style="width:21%;background:var(--seg3)"></i></dd>
         <dd><ul class="legend">
-          <li style="--c:var(--mint-ink)">JUnit 4,475</li>
-          <li style="--c:var(--seg2)">프런트 1,475</li>
-          <li style="--c:var(--seg3)">vitest 932</li>
+          <li style="--c:var(--mint-ink)">JUnit 4,509</li>
+          <li style="--c:var(--seg2)">프런트 1,844</li>
+          <li style="--c:var(--seg3)">vitest 1,686</li>
         </ul></dd>
       </div>
       <div class="metric">
@@ -412,8 +414,8 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
       <aside class="rail" aria-label="플랜잇 요약">
         <dl class="rail-facts">
           <div><dt>기간</dt><dd><span class="nw">2026-08-20</span> ~ 운영 중</dd></div>
-          <div><dt>커밋</dt><dd>350 / 591 (59%)</dd></div>
-          <div><dt>테스트</dt><dd>vitest 932건</dd></div>
+          <div><dt>커밋</dt><dd>366 / 607 (60%)</dd></div>
+          <div><dt>테스트</dt><dd>vitest 1,686건</dd></div>
           <div><dt>배포</dt><dd>운영 S3 + CloudFront, dev EC2</dd></div>
         </dl>
         <nav class="rail-toc" aria-label="플랜잇 목차">
@@ -432,11 +434,12 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
           <h3 id="planit-overview">개요</h3>
           <p>후불 여행·보험·휴대폰·렌탈 상담을 받는 대외 사이트입니다. 운영 주소는 <a href="https://플랜잇.com">플랜잇.com</a> 입니다.</p>
           <p>Next.js 15 정적 내보내기를 S3 + CloudFront 로 배포합니다. 피그마 시안을 웹·모바일 두 벌로 옮긴 여행 랜딩 시리즈, 상담 접수 폼, 픽셀·분석 계측을 구현했습니다.</p>
+          <p>여행 목적별 랜딩(신혼·우정·가족)과 인스타그램 캐러셀에서 들어오는 링크 허브·월 납부금 계산 플로우까지 운영에 올렸습니다.</p>
         </section>
         <section aria-labelledby="planit-role">
           <h3 id="planit-role">역할</h3>
           <ul class="list">
-            <li><strong>페이지 설계·구현:</strong> 홈, 여행 목록·상세, 여행 랜딩 시리즈, 휴대폰·렌탈·인터넷·보험 페이지</li>
+            <li><strong>페이지 설계·구현:</strong> 홈, 여행 목록·상세, 여행 랜딩 시리즈, 링크 허브·월 납부금 플로우, 휴대폰·렌탈·인터넷·보험 페이지</li>
             <li><strong>피그마 시안 코드화:</strong> 웹 1440·모바일 390 두 벌, 스크롤 모션 포함</li>
             <li><strong>상담 접수 폼과 전산 연동</strong>(접수 API 는 전산 백엔드가 제공)</li>
             <li><strong>계측:</strong> 메타 픽셀, GA4, Clarity, 네이버 분석, 유입 경로 수집</li>
@@ -460,11 +463,17 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <li><strong>홈 랜딩</strong>과 <strong>여행 목록·상세</strong></li>
             <li><strong>여행 랜딩 시리즈:</strong> 피그마 시안을 웹 1440·모바일 390 두 벌로 1:1 코드화하고 스크롤 모션을 붙였습니다.
               <ul>
-                <li><span class="nw">LP-01</span> 원페이지 상담, <span class="nw">LP-02</span> 후불여행, <span class="nw">LP-03</span> 동남아 월 가격, <span class="nw">LP-04</span> 신혼여행, <span class="nw">LP-06</span> 우정여행</li>
+                <li><span class="nw">LP-01</span> 원페이지 상담, <span class="nw">LP-02</span> 후불여행, <span class="nw">LP-03</span> 동남아 월 가격, <span class="nw">LP-04</span> 신혼여행, <span class="nw">LP-06</span> 우정여행, <span class="nw">LP-07</span> 가족여행</li>
                 <li>카테고리별 정적 경로 <code>/travel/lp/&lt;slug&gt;/</code> 10개</li>
+                <li><span class="nw">LP-07</span> 가족여행: 가족에게 보내는 공유 카드(카카오톡 공유)와 인원 계산기(3·4·5인 + 직접 입력, 1인 월 금액 × 인원)</li>
               </ul>
             </li>
-            <li><strong>상담 접수 폼:</strong> 생년월일·납부 방식 등 전 항목 필수, 개인정보 동의 문구는 버전으로 관리</li>
+            <li><strong>링크 허브(<span class="nw">LP-08</span>):</strong> 인스타그램 캐러셀에서 들어오는 <a href="https://플랜잇.com/link/"><code>/link/</code></a>. 버튼마다 UTM 을 붙여 어느 버튼으로 들어온 유입인지 전산에서 구분합니다.</li>
+            <li><strong>월 납부금 플로우(<span class="nw">LP-08</span>):</strong> <a href="https://플랜잇.com/link/monthly/"><code>/link/monthly/</code></a>
+              <ol class="steps" style="margin:4px 0" aria-label="월 납부금 플로우 단계"><li>01 여행지</li><li>02 인원·시기</li><li>03 결과·카카오톡 공유</li><li>04 상담 신청</li></ol>
+              상담 신청은 여행 랜딩 폼과 같은 규칙·접수 API 를 쓰고, 앞 단계에서 고른 값을 미리 채웁니다.</li>
+            <li><strong>견적 일정표 랜딩:</strong> 견적번호마다 일정표 페이지를 공용 화면 틀 하나와 견적별 데이터 모듈로 찍어 냅니다(검색 노출 제외).</li>
+            <li><strong>상담 접수 폼:</strong> 생년월일·납부 방식 등 전 항목 필수, 개인정보 동의 문구는 버전으로 관리, 입력 칸 초점 표시는 칸 테두리 한 겹으로 통일</li>
             <li><strong>휴대폰 비교·견적</strong>, <strong>렌탈·인터넷·보험</strong> 페이지</li>
             <li><strong>테마 페이지 영상 히어로:</strong> 여러 테마 페이지가 쓰는 공용 컴포넌트</li>
             <li><strong>카카오톡 공유:</strong> 투표 카드를 피드 메시지로 보내고, 실패하면 <code>navigator.share</code> → 클립보드 순서로 대체</li>
@@ -494,6 +503,11 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <article class="note">
               <h4>시안과 픽셀 단위로 맞추는 검증</h4>
               <p>피그마 MCP 로 시안의 수치를 읽어 옮긴 뒤, 헤드리스 Chrome 으로 1440·390 화면을 캡처해 같은 폭의 시안과 구간별로 비교합니다. 어긋난 구간을 찾아 고치고 다시 캡처하는 과정을 반복합니다.</p>
+            </article>
+            <article class="note">
+              <h4>공유 링크로 그대로 다시 여는 계산 결과</h4>
+              <p>월 납부금 플로우는 한 페이지 안에서 01~04 단계를 바꿔 그리지만, 지금 단계와 고른 값(여행지·인원·시기)을 주소의 쿼리에 함께 담습니다.</p>
+              <p>그래서 03 결과 화면을 카카오톡으로 보내면 받은 사람도 같은 결과 화면을 바로 엽니다. 여행지별 1인 월 금액은 여행 목록과 같은 상품 데이터·계산을 써서 페이지마다 숫자가 어긋나지 않게 했습니다.</p>
             </article>
           </div>
         </section>
@@ -538,6 +552,29 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
       </div>
 
       <div class="g-group">
+        <h4>LP-07 가족여행과 LP-08 링크 허브</h4>
+        <p>LP-07 은 웹 첫 화면과 모바일 전체 페이지(중간에 가족 공유 카드와 인원 계산기), LP-08 은 인스타그램 캐러셀에서 들어오는 링크 허브와 월 납부금 플로우의 01 여행지 단계(모바일 390)입니다.</p>
+        <div class="duo">
+          <figure class="wide">
+            <a class="shot" href="assets/planit-lp07-fold.webp" data-zoom data-fit="contain"><img src="assets/planit-lp07-fold.webp" alt="LP-07 가족여행 랜딩 첫 화면" width="1440" height="900" loading="lazy" decoding="async"></a>
+            <figcaption><span class="cap">LP-07 가족여행 웹 첫 화면</span></figcaption>
+          </figure>
+          <figure class="phone phone-full">
+            <div class="frame"><div class="scroller" tabindex="0" role="region" aria-label="LP-07 가족여행 모바일 전체 페이지, 스크롤해서 보기"><img src="assets/planit-lp07-mobile-full.webp" data-zoom="assets/planit-lp07-mobile-full.webp" data-fit="scroll" alt="LP-07 가족여행 모바일 전체 페이지" width="390" height="6569" loading="lazy" decoding="async"></div></div>
+            <figcaption class="cap-row"><span class="cap">LP-07 모바일 전체 페이지</span><a class="zoom-link" href="assets/planit-lp07-mobile-full.webp" data-zoom data-fit="scroll">크게 보기</a></figcaption>
+          </figure>
+          <figure class="phone">
+            <a class="shot" href="assets/planit-link-hub-390.webp" data-zoom data-fit="contain"><img src="assets/planit-link-hub-390.webp" alt="LP-08 링크 허브 모바일 화면" width="390" height="844" loading="lazy" decoding="async"></a>
+            <figcaption><span class="cap">LP-08 링크 허브</span></figcaption>
+          </figure>
+          <figure class="phone">
+            <a class="shot" href="assets/planit-link-monthly-390.webp" data-zoom data-fit="contain"><img src="assets/planit-link-monthly-390.webp" alt="월 납부금 플로우 01 여행지 고르기 모바일 화면" width="390" height="844" loading="lazy" decoding="async"></a>
+            <figcaption><span class="cap">월 납부금 플로우 01 여행지</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="g-group">
         <h4>그 밖의 화면</h4>
         <div class="grid grid-2">
           <figure><a class="shot" href="assets/planit-home-fold.webp" data-zoom data-fit="contain"><img src="assets/planit-home-fold.webp" alt="플랜잇 홈 첫 화면" width="1440" height="900" loading="lazy" decoding="async"></a><figcaption><span class="cap">홈</span></figcaption></figure>
@@ -563,8 +600,8 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
     <div class="proj-grid">
       <aside class="rail" aria-label="TnG INSURE 저장소 요약">
         <dl class="rail-facts">
-          <div><dt class="repo">Insurance_backend</dt><dd>Spring Boot API 서버</dd><dd><span class="nw">2026-08-05</span> 시작</dd><dd>커밋 754 / 971 (78%)</dd><dd>JUnit 4,475건</dd><dd>Java 약 25만 줄(이 중 절반이 테스트), Flyway 마이그레이션 90개</dd></div>
-          <div><dt class="repo">Insurance_frontend</dt><dd>웹 어드민 「TnG INSURE」</dd><dd><span class="nw">2026-08-10</span> 시작</dd><dd>커밋 763 / 891 (86%)</dd><dd>테스트 1,475건</dd><dd>TypeScript 약 5.4만 줄</dd></div>
+          <div><dt class="repo">Insurance_backend</dt><dd>Spring Boot API 서버</dd><dd><span class="nw">2026-08-05</span> 시작</dd><dd>커밋 756 / 973 (78%)</dd><dd>JUnit 4,509건</dd><dd>Java 약 25만 줄(이 중 절반이 테스트), Flyway 마이그레이션 91개</dd></div>
+          <div><dt class="repo">Insurance_frontend</dt><dd>웹 어드민 「TnG INSURE」</dd><dd><span class="nw">2026-08-10</span> 시작</dd><dd>커밋 767 / 895 (86%)</dd><dd>테스트 1,844건</dd><dd>TypeScript 약 7.8만 줄</dd></div>
           <div><dt class="repo">Insurance_infra</dt><dd>Terraform 설계 초안 18개 파일</dd></div>
         </dl>
         <nav class="rail-toc" aria-label="TnG INSURE 목차">
@@ -613,7 +650,7 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <div><dt>소통</dt><dd>공지, 알림, 녹취, 메신저</dd></div>
             <div><dt>일정·근태</dt><dd>캘린더(CalDAV), 근태</dd></div>
             <div><dt>결제·포인트</dt><dd>포인트, PortOne·Toss 결제</dd></div>
-            <div><dt>단가</dt><dd>휴대폰·렌탈 단가표</dd></div>
+            <div><dt>단가</dt><dd>휴대폰·렌탈 단가표, 렌탈 수수료표 직원별 마진률(원 수수료를 저장해 두고 조회하는 직원의 마진률로 다시 계산)</dd></div>
             <div><dt>사이트 연동</dt><dd>사이트 접수 → 고객·케이스 자동 생성, 유입 매체 분류, 미배정 알림</dd></div>
           </dl>
           <h4 class="sub-h">웹 어드민 화면</h4>
@@ -622,6 +659,7 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <li>고객·상담 케이스 관리</li>
             <li>보험계약 엑셀 임포트</li>
             <li>매출·수수료 화면</li>
+            <li>렌탈 수수료표 직원별 마진률 관리</li>
             <li>역할별 권한</li>
             <li>캘린더, 근태</li>
             <li>모바일 대응, 다크모드</li>
@@ -657,7 +695,7 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             </article>
             <article class="note">
               <h4>테스트 비중</h4>
-              <p>백엔드 Java 코드의 절반이 테스트이고 JUnit 4,475건, 프런트엔드 테스트 1,475건이 있습니다.</p>
+              <p>백엔드 Java 코드의 절반이 테스트이고 JUnit 4,509건, 프런트엔드 테스트 1,844건이 있습니다.</p>
               <p>업종 5개와 역할별 권한이 얽힌 도메인이라 기능을 더할 때 기존 동작이 깨지지 않았는지 테스트로 먼저 확인합니다.</p>
             </article>
           </div>
@@ -688,6 +726,7 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
           <div><dt>채널</dt><dd>페이스북·인스타그램</dd></div>
           <div><dt>최적화</dt><dd>픽셀 Lead 전환</dd></div>
           <div><dt>유입 추적</dt><dd>동적 UTM, 전산 유입 매체 분류</dd></div>
+          <div><dt>캠페인</dt><dd>여행 목적별(신혼·우정·가족)</dd></div>
         </dl>
         <p class="rail-note">금액·성과 수치와 계정·픽셀 식별자는 싣지 않습니다. 구조와 운영 방식만 설명합니다.</p>
         <nav class="rail-toc" aria-label="메타 광고 운영 목차">
@@ -707,6 +746,7 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
           <p>플랜잇 사이트로 상담 접수를 모으기 위한 메타(페이스북·인스타그램) 광고 운영입니다.</p>
           <p><strong>메타 공식 Ads MCP</strong> 로 캠페인·광고 세트·소재·광고를 코드로 생성·분석·조정합니다.</p>
           <p>광고 클릭에서 사이트 접수, 전산의 고객·상담 케이스까지 한 줄로 이어지도록 계측을 설계했습니다.</p>
+          <p>여행 목적별 캠페인(신혼·우정·가족)을 각 랜딩(<span class="nw">LP-04</span>·<span class="nw">LP-06</span>·<span class="nw">LP-07</span>)에 이어 운영합니다.</p>
         </section>
         <section aria-labelledby="meta-role">
           <h3 id="meta-role">역할</h3>
@@ -714,7 +754,7 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <li><strong>캠페인 구조 설계:</strong> 전환 목표, 광고 세트 분리 기준, 노출 위치·연령 설정</li>
             <li><strong>소재·카피:</strong> 페르소나 문서 기반 타깃과 문구, 표현 규칙 점검, 소재 등록</li>
             <li><strong>계측:</strong> 메타 픽셀 Lead 이벤트(사이트 코드), 동적 UTM, 전산 유입 매체 분류(백엔드 코드)</li>
-            <li><strong>분석·조정:</strong> 노출 위치·연령별 결과를 보고 세트 구조와 타깃 수정</li>
+            <li><strong>분석·조정:</strong> 노출 위치·연령별 결과를 보고 세트 구조와 타깃 수정, 연령·성별·노출 위치·일자별 성과 분석 리포트 작성</li>
           </ul>
         </section>
         <section aria-labelledby="meta-tools">
@@ -723,7 +763,8 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <div><dt>광고 운영</dt><dd>메타 공식 Ads MCP(캠페인·광고 세트·소재·광고 생성과 인사이트 조회), Claude Code</dd></div>
             <div><dt>전환 신호</dt><dd>메타 픽셀 Lead 이벤트(접수 성공 시 1회, eventID 중복 제거)</dd></div>
             <div><dt>유입 추적</dt><dd>동적 UTM, 전산 유입 매체 분류(ig/fb, 광고, 노출 위치)</dd></div>
-            <div><dt>소재</dt><dd>정사각(1080)·세로(1080x1920) 두 규격, S3 에 올린 뒤 URL 로 등록</dd></div>
+            <div><dt>소재</dt><dd>정사각(1080)·세로(1080x1920) 두 규격, S3 에 올린 뒤 URL 로 등록, Advantage+ 크리에이티브 자동 음악(<code>music_generation</code>)</dd></div>
+            <div><dt>분석</dt><dd>인사이트를 연령·성별·노출 위치·일자별로 나눠 조회, 전산 접수(UTM)와 대조</dd></div>
             <div><dt>기준 문서</dt><dd>페르소나 문서 6종, 표현 금지 규칙</dd></div>
           </dl>
         </section>
@@ -736,6 +777,10 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <li><strong>표현 규칙:</strong> 「무이자」「0원」「최저가」는 쓰지 않습니다. 조건이 붙는 가격은 「1인」「개월」을 함께 적습니다.</li>
             <li><strong>동적 UTM:</strong> 새 광고에는 <code>utm_source={{site_source_name}}</code> 를 비롯해 노출 위치(<code>{{placement}}</code>)·광고 이름(<code>{{ad.name}}</code>) 같은 동적 값을 반드시 붙입니다.</li>
             <li><strong>세트 구조 조정:</strong> 노출 위치·연령 분석 결과로 Audience Network 를 제외하고, 연령을 고정하고, 피드와 릴스를 별도 세트로 나눴습니다.</li>
+            <li><strong>여행 목적별 캠페인:</strong> 신혼여행(<span class="nw">LP-04</span>)에 이어 우정여행(<span class="nw">LP-06</span>)·가족여행(<span class="nw">LP-07</span>) 캠페인을 더했습니다. 캠페인마다 해당 페르소나의 연령대로 타깃을 고정하고 그 랜딩으로 보냅니다.</li>
+            <li><strong>노출 위치별 광고 세트:</strong> 캠페인마다 피드(정사각) 세트와 릴스·스토리(세로) 세트를 따로 두고, 규격에 맞는 소재를 각각 붙입니다.</li>
+            <li><strong>자동 음악:</strong> 새 소재는 Advantage+ 크리에이티브의 자동 음악(<code>music_generation</code>)을 켜서 등록합니다.</li>
+            <li><strong>성과 분석 리포트:</strong> 픽셀 Lead 기준 결과를 연령·성별·노출 위치·일자별로 나눠 보고, 전산에 들어온 접수와 맞춰 본 뒤 다음 타깃·세트 구조를 정합니다.</li>
           </ul>
         </section>
         <section aria-labelledby="meta-notes">
@@ -761,6 +806,21 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
               <h4>광고 문구의 표현 규칙</h4>
               <p>후불 여행은 월 납부 금액이 눈에 띄는 상품이라 오해를 부르는 표현이 생기기 쉽습니다.</p>
               <p>「무이자」「0원」「최저가」는 금지하고, 조건부 가격에는 「1인」「개월」과 적용 조건을 함께 적는 규칙을 두고 카피를 쓸 때마다 점검합니다.</p>
+            </article>
+            <article class="note">
+              <h4>노출 위치별 소재를 세트 분리로 대신하기</h4>
+              <p>한 광고에 노출 위치마다 다른 소재를 붙이는 기능은 지금 쓰는 MCP 로는 열려 있지 않습니다.</p>
+              <p>그래서 같은 타깃의 광고 세트를 피드용과 릴스·스토리용으로 나누고, 피드 세트에는 정사각 소재, 릴스·스토리 세트에는 세로 소재를 붙였습니다.</p>
+            </article>
+            <article class="note">
+              <h4>고칠 수 없는 크리에이티브</h4>
+              <p>자동 음악 같은 크리에이티브 기능은 만든 뒤에 바꿀 수 없습니다.</p>
+              <p>기능을 바꿀 때는 크리에이티브와 광고를 새로 만들어 켜고, 이전 광고는 일시정지해 둔 뒤 정리합니다.</p>
+            </article>
+            <article class="note">
+              <h4>성과를 나눠 보는 기준</h4>
+              <p>결과는 연령·성별·노출 위치·일자 네 축으로 나눠 봅니다. 같은 캠페인 안에서도 연령·성별·지면에 따라 반응이 달라질 수 있어서, 합계만 보고는 무엇을 바꿀지 정하기 어렵습니다.</p>
+              <p>결과가 기대와 다르면 먼저 계측 경로(같은 접수 폼·같은 Lead 이벤트)가 다른 랜딩과 같은지 확인해 기술 결함을 배제하고, 그다음 소재·타깃을 봅니다.</p>
             </article>
           </div>
         </section>
