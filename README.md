@@ -6,23 +6,24 @@ TnG 의 사내 보험 전산과 대외 사이트 플랜잇을 설계·구현·�
 
 | 항목 | 내용 |
 |---|---|
-| 기간 | 2026-08-05 ~ 2026-10-27 (약 12주) |
+| 기간 | 2026-08-05 ~ 2026-11-06 (약 13주) |
 | 저장소 | 4개 — Planit, Insurance_backend, Insurance_frontend, Insurance_infra |
-| 커밋 | 1,889 / 2,475 (세 저장소 합계의 76%) |
-| PR | 660 / 725 |
-| 자동 테스트 | 약 8,000건 (JUnit 4,509 · 프런트 1,844 · vitest 1,686) |
-| 운영 승격 | dev → 운영 10차 |
+| 커밋 | 2,090 / 2,758 (세 저장소 합계의 76%) |
+| PR | 741 / 838 |
+| 자동 테스트 | 약 10,000건 (JUnit 5,459 · 프런트 1,973 · vitest 2,598) |
+| 운영 승격 | dev → 운영 승격 PR 62건 (전산 백엔드 34 · 플랜잇 28) |
 
 <!--
-수치 기준(2026-10-27 집계)
-- 커밋: 저장소마다 `git shortlog -sne --all`(원격 브랜치 포함 모든 ref, 머지 커밋 포함)에서 본인 이름으로 된 커밋 / 전체 커밋. Planit·Insurance_backend·Insurance_frontend 세 저장소 합계(Insurance_infra 는 1개라 뺌).
-- PR: 네 저장소의 `gh pr list --state all` 중 작성자 limHyeonTaek / 전체(Insurance_infra 는 PR 없음).
-- 테스트: 세 저장소 origin/dev 소스의 테스트 케이스 수 — 백엔드 `@Test`, 프런트 tests/*.mjs 의 test(, Planit *.test.ts(x) 의 it(.
-  (10/23 초안의 프런트 1,475·vitest 932 는 오래된 로컬 체크아웃 기준이라, 이번부터 세 저장소 모두 origin/dev 로 셈)
-- 운영 승격: 전산 promote 브랜치 기준 차수(마지막 10차 2026-10-23). 플랜잇은 dev → main PR 로 따로 배포.
+수치 기준(2026-11-06 집계)
+- 커밋: 저장소마다 `git shortlog -sne --all`(원격 브랜치 포함 모든 ref, 머지 커밋 포함)에서 본인 이름으로 된 커밋 / 전체 커밋. Planit·Insurance_backend·Insurance_frontend 세 저장소 합계(Insurance_infra 는 1개라 뺌). 10/27 과 같은 기준.
+- PR: 네 저장소의 `gh pr list --state all` 중 작성자 limHyeonTaek / 전체(Insurance_infra 는 PR 없음). 10/27 과 같은 기준.
+- 테스트: 이번부터 실행 결과로 셈 — 백엔드 origin/dev `./gradlew test` 결과 XML 의 tests 합, 프런트 origin/dev `npm test`(node --test) 의 tests, Planit dev `vitest run` 의 테스트 수.
+  (10/27 은 소스의 테스트 케이스 수 — 백엔드 `@Test`, 프런트 tests/*.mjs 의 test(, Planit *.test.ts(x) 의 it( — 로 셈)
+- 운영 승격: 2026-08-05 이후 main 으로 머지된 PR 중 제목에 「운영 승격」이 든 것. Insurance_backend 34건(차수 이름으로는 2026-11-06 19차), Planit 28건(2026-11-06 21차).
+  차수 이름은 중간부터 붙였고 같은 날 추가 승격은 차수를 따로 매기지 않아 건수와 다름. 전산 프런트 승격 PR 은 백엔드와 같은 차수로 함께 올라가 따로 세지 않음.
 -->
 
-저장소마다 공동 작업자 1명과 함께 작업했습니다. 업무 저장소는 비공개라 코드 대신 구조와 결정을 정리했습니다.
+저장소마다 공동 작업자 1~2명과 함께 작업했습니다. 업무 저장소는 비공개라 코드 대신 구조와 결정을 정리했습니다.
 
 ## 프로젝트
 
@@ -32,6 +33,7 @@ TnG 의 사내 보험 전산과 대외 사이트 플랜잇을 설계·구현·�
 Next.js 15 정적 내보내기를 S3 + CloudFront 로 배포합니다.
 피그마 시안을 웹·모바일 두 벌로 옮긴 여행 랜딩 시리즈, 상담 접수 폼, 픽셀·분석 계측을 구현했습니다.
 여행 목적별 랜딩(신혼·우정·가족)과 인스타그램 캐러셀에서 들어오는 링크 허브·월 납부금 계산 플로우까지 운영에 올렸습니다.
+10월 말부터는 효도여행·보험 B2B 시상여행 랜딩, 네이버·카카오 소셜 로그인, 견적 일정표 짧은 주소(`/q/번호`)와 모두투어 사진 자동 삽입·미리보기를 더했고, 렌탈+동남아 랜딩(LP-10)을 만들고 있습니다(진행 중).
 
 ![LP-06 우정여행 랜딩 첫 화면(웹 1440)](docs/assets/planit-lp06-fold.webp)
 
@@ -41,7 +43,8 @@ Next.js 15 정적 내보내기를 S3 + CloudFront 로 배포합니다.
 
 Spring Boot 3.5 백엔드와 React 19 웹 어드민. 5개 업종의 고객·상담 케이스, 계약 원장·매출·수수료, 역할별 권한, 캘린더·근태, 메신저를 다룹니다.
 사이트 접수를 고객·케이스로 자동 생성하고 미배정 건을 알립니다. 운영은 ECS 입니다.
-렌탈 수수료표는 원 수수료를 저장해 두고, 조회하는 직원의 마진률로 다시 계산해 보여 줍니다.
+렌탈 수수료표는 원 수수료를 저장해 두고 조회하는 직원의 마진률로 다시 계산해 보여 주며, 매달 렌탈사 원본 엑셀을 업로드 양식과 전월 대비 변경분으로 바꾸는 도구 체인으로 갱신합니다.
+최근에는 견적 일정표 저장·공개 API, 모두투어 견적 사진 매핑, 여행 계약서 PDF 읽기와 계약 보고, 플랜잇 고객 소셜 로그인 API 를 더했습니다.
 
 ![사내 전산 로그인 화면](docs/assets/insurance-login.webp)
 
@@ -51,7 +54,8 @@ Spring Boot 3.5 백엔드와 React 19 웹 어드민. 5개 업종의 고객·상�
 
 메타 공식 Ads MCP 로 캠페인·광고 세트·소재·광고를 코드로 생성·조정합니다.
 픽셀 Lead 전환으로 최적화하고, 동적 UTM 으로 전산에서 광고·노출 위치 단위까지 유입을 추적합니다.
-여행 목적별(신혼·우정·가족) 캠페인을 노출 위치별 광고 세트로 나눠 운영하고, 연령·성별·노출 위치·일자별로 나눠 성과를 분석합니다.
+여행 목적별(신혼·우정·가족·효도)과 B2B(보험 시상여행·영업조직) 캠페인을 노출 위치별 광고 세트로 나눠 운영하고, 피그마에서 만든 소재를 로컬 업로드로 바로 등록합니다.
+성과는 연령·성별·노출 위치·소재별로 나눠 보고, 랜딩 조회 → 접수 전환율로 랜딩 문제와 소재 문제를 구분합니다.
 
 <img src="docs/assets/meta-ad-friendship-chat.webp" alt="우정여행 광고 소재" width="360">
 
@@ -61,10 +65,10 @@ Spring Boot 3.5 백엔드와 React 19 웹 어드민. 5개 업종의 고객·상�
 
 | 구분 | 기술 |
 |---|---|
-| 백엔드 | Java 17, Spring Boot 3.5, PostgreSQL, Redis, Flyway, JWT |
+| 백엔드 | Java 17, Spring Boot 3.5, PostgreSQL, Redis, Flyway, JWT, PDFBox |
 | 프런트엔드 | TypeScript, React 19, Next.js 15, vinext(Vite 8), Tailwind CSS 4, Tiptap, three.js |
-| 인프라 | AWS ECS·ECR·EC2·S3·CloudFront, CloudFormation, Terraform, Docker Compose, Caddy, GitHub Actions |
-| 도구 | JUnit, vitest, 헤드리스 Chrome, Figma MCP, Meta Ads MCP, Claude Code |
+| 인프라 | AWS ECS·ECR·EC2·S3·CloudFront(CloudFront 함수 포함), CloudFormation, Terraform, Docker Compose, Caddy, GitHub Actions |
+| 도구 | JUnit, vitest, 헤드리스 Chrome, Python(openpyxl), Figma MCP, Meta Ads MCP, Claude Code |
 
 ## 일하는 방식
 
@@ -72,6 +76,8 @@ Spring Boot 3.5 백엔드와 React 19 웹 어드민. 5개 업종의 고객·상�
 - **dev → 운영 승격**: `promote/<날짜>` 브랜치를 만들고, 아직 올리지 않을 기능은 제외 집합으로 묶어 빼고 승격합니다.
 - **테스트·검증**: 전산은 CI 테스트 뒤에 배포하고 운영 배포 후 헬스체크로 확인합니다. 화면은 헤드리스 Chrome 캡처로 시안과 대조합니다.
 - **AI 도구 활용**: Claude Code 로 작업을 서브에이전트에 나눠 맡기고, PR 리뷰와 배포 검증까지 개발 흐름에 넣었습니다.
+- **반복 업무 도구화**: 렌탈 수수료표 월간 갱신·휴대폰 단가표 변환처럼 매달 되풀이되는 엑셀 작업을 스크립트로 만들고, 양식이 바뀌면 종료 코드로 멈추게 했습니다. 휴대폰 단가표 도구는 키트로 묶어 팀원에게 넘겼습니다.
+- **만들지, 쓸지**: 전자서명은 자체 구축 대신 외부 전자계약 서비스를 쓰고, 전산은 웹훅으로만 잇기로 했습니다(2026-11-05).
 
 <img src="docs/assets/planit-lp06-mobile-fold.webp" alt="LP-06 우정여행 랜딩 모바일 390 첫 화면" width="260">
 

@@ -365,41 +365,46 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
   <div class="wrap">
     <h2 class="sec-h" id="overview-h">한눈에 보기</h2>
     <dl class="facts-top">
-      <div><dt>기간</dt><dd><span class="nw">2026-08-05 ~ 2026-10-27</span> (약 12주)</dd></div>
+      <div><dt>기간</dt><dd><span class="nw">2026-08-05 ~ 2026-11-06</span> (약 13주)</dd></div>
       <div><dt>저장소</dt><dd>4개 (Planit, Insurance_backend, Insurance_frontend, Insurance_infra)</dd></div>
     </dl>
-    <!-- 수치 기준(2026-10-27): 커밋 = 저장소별 git shortlog -sne --all 본인/전체(세 저장소 합), PR = gh pr list --state all 작성자 본인/전체,
-         테스트 = origin/dev 소스의 테스트 케이스 수(백엔드 @Test · 프런트 tests/*.mjs 의 test( · Planit *.test.ts(x) 의 it(), 운영 승격 = 전산 promote 브랜치 차수. README 주석 참고. -->
+    <!-- 수치 기준(2026-11-06): 커밋 = 저장소별 git shortlog -sne --all 본인/전체(세 저장소 합), PR = gh pr list --state all 작성자 본인/전체(둘 다 10/27 과 같은 기준),
+         테스트 = origin/dev 실행 결과(백엔드 gradle test XML 의 tests 합 · 프런트 npm test 의 tests · Planit vitest run 테스트 수),
+         운영 승격 = 2026-08-05 이후 main 으로 머지된 「운영 승격」 PR 수(전산 백엔드 34 · 플랜잇 28, 차수 이름으로는 19차 · 21차). README 주석 참고. -->
     <dl class="metrics">
       <div class="metric">
         <dt>커밋</dt>
-        <dd class="big">1,889<small>/ 2,475</small></dd>
+        <dd class="big">2,090<small>/ 2,758</small></dd>
         <dd class="sub">세 저장소 합계의 76%</dd>
-        <dd class="bar" aria-hidden="true"><i style="width:76.3%"></i></dd>
+        <dd class="bar" aria-hidden="true"><i style="width:75.8%"></i></dd>
       </div>
       <div class="metric">
         <dt>PR</dt>
-        <dd class="big">660<small>/ 725</small></dd>
-        <dd class="bar" aria-hidden="true"><i style="width:91%"></i></dd>
+        <dd class="big">741<small>/ 838</small></dd>
+        <dd class="bar" aria-hidden="true"><i style="width:88.4%"></i></dd>
       </div>
       <div class="metric">
         <dt>자동 테스트</dt>
-        <dd class="big"><small class="pre">약</small>8,000<small>건</small></dd>
-        <dd class="bar" aria-hidden="true"><i style="width:56.1%;background:var(--mint-ink)"></i><i style="width:22.9%;background:var(--seg2)"></i><i style="width:21%;background:var(--seg3)"></i></dd>
+        <dd class="big"><small class="pre">약</small>10,000<small>건</small></dd>
+        <dd class="bar" aria-hidden="true"><i style="width:54.4%;background:var(--mint-ink)"></i><i style="width:19.7%;background:var(--seg2)"></i><i style="width:25.9%;background:var(--seg3)"></i></dd>
         <dd><ul class="legend">
-          <li style="--c:var(--mint-ink)">JUnit 4,509</li>
-          <li style="--c:var(--seg2)">프런트 1,844</li>
-          <li style="--c:var(--seg3)">vitest 1,686</li>
+          <li style="--c:var(--mint-ink)">JUnit 5,459</li>
+          <li style="--c:var(--seg2)">프런트 1,973</li>
+          <li style="--c:var(--seg3)">vitest 2,598</li>
         </ul></dd>
       </div>
       <div class="metric">
         <dt>운영 승격</dt>
-        <dd class="big">10<small>차</small></dd>
-        <dd class="sub">dev → 운영</dd>
-        <dd class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></dd>
+        <dd class="big">62<small>건</small></dd>
+        <dd class="sub">dev → 운영 승격 PR</dd>
+        <dd class="bar" aria-hidden="true"><i style="width:54.8%;background:var(--mint-ink)"></i><i style="width:45.2%;background:var(--seg2)"></i></dd>
+        <dd><ul class="legend">
+          <li style="--c:var(--mint-ink)">전산 백엔드 34</li>
+          <li style="--c:var(--seg2)">플랜잇 28</li>
+        </ul></dd>
       </div>
     </dl>
-    <p class="overview-note">저장소마다 공동 작업자 1명과 함께 작업했습니다. 업무 저장소는 비공개라 코드 대신 구조와 결정을 정리했습니다.</p>
+    <p class="overview-note">저장소마다 공동 작업자 1~2명과 함께 작업했습니다. 업무 저장소는 비공개라 코드 대신 구조와 결정을 정리했습니다.</p>
   </div>
 </section>
 
@@ -414,8 +419,8 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
       <aside class="rail" aria-label="플랜잇 요약">
         <dl class="rail-facts">
           <div><dt>기간</dt><dd><span class="nw">2026-08-20</span> ~ 운영 중</dd></div>
-          <div><dt>커밋</dt><dd>366 / 607 (60%)</dd></div>
-          <div><dt>테스트</dt><dd>vitest 1,686건</dd></div>
+          <div><dt>커밋</dt><dd>459 / 753 (61%)</dd></div>
+          <div><dt>테스트</dt><dd>vitest 2,598건</dd></div>
           <div><dt>배포</dt><dd>운영 S3 + CloudFront, dev EC2</dd></div>
         </dl>
         <nav class="rail-toc" aria-label="플랜잇 목차">
@@ -435,11 +440,13 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
           <p>후불 여행·보험·휴대폰·렌탈 상담을 받는 대외 사이트입니다. 운영 주소는 <a href="https://플랜잇.com">플랜잇.com</a> 입니다.</p>
           <p>Next.js 15 정적 내보내기를 S3 + CloudFront 로 배포합니다. 피그마 시안을 웹·모바일 두 벌로 옮긴 여행 랜딩 시리즈, 상담 접수 폼, 픽셀·분석 계측을 구현했습니다.</p>
           <p>여행 목적별 랜딩(신혼·우정·가족)과 인스타그램 캐러셀에서 들어오는 링크 허브·월 납부금 계산 플로우까지 운영에 올렸습니다.</p>
+          <p>10월 말부터는 효도여행·보험 B2B 시상여행 랜딩, 네이버·카카오 소셜 로그인, 견적 일정표 짧은 주소(<code>/q/번호</code>)와 모두투어 사진 자동 삽입·미리보기를 더했고, 렌탈+동남아 랜딩(<span class="nw">LP-10</span>)을 만들고 있습니다(진행 중).</p>
         </section>
         <section aria-labelledby="planit-role">
           <h3 id="planit-role">역할</h3>
           <ul class="list">
-            <li><strong>페이지 설계·구현:</strong> 홈, 여행 목록·상세, 여행 랜딩 시리즈, 링크 허브·월 납부금 플로우, 휴대폰·렌탈·인터넷·보험 페이지</li>
+            <li><strong>페이지 설계·구현:</strong> 홈, 여행 목록·상세, 여행 랜딩 시리즈, 링크 허브·월 납부금 플로우, 로그인·마이페이지, 휴대폰·렌탈·인터넷·보험 페이지</li>
+            <li><strong>어드민 견적 도구:</strong> 견적번호 발급, 견적서 전용 주소, 고객 일정표 짧은 주소·사진 자동 삽입·미리보기</li>
             <li><strong>피그마 시안 코드화:</strong> 웹 1440·모바일 390 두 벌, 스크롤 모션 포함</li>
             <li><strong>상담 접수 폼과 전산 연동</strong>(접수 API 는 전산 백엔드가 제공)</li>
             <li><strong>계측:</strong> 메타 픽셀, GA4, Clarity, 네이버 분석, 유입 경로 수집</li>
@@ -453,26 +460,45 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <div><dt>그래픽</dt><dd>three.js</dd></div>
             <div><dt>테스트·검증</dt><dd>vitest, 헤드리스 Chrome 시안 대비 픽셀 검증</dd></div>
             <div><dt>배포</dt><dd>GitHub Actions(OIDC) → S3 + CloudFront(운영), EC2(dev)</dd></div>
-            <div><dt>인프라</dt><dd>CloudFormation</dd></div>
-            <div><dt>연동</dt><dd>카카오 JS SDK, 메타 픽셀, GA4, Microsoft Clarity, 네이버 분석</dd></div>
+            <div><dt>인프라</dt><dd>CloudFormation, CloudFront 함수(주소 재작성)</dd></div>
+            <div><dt>연동</dt><dd>카카오 JS SDK, 메타 픽셀, GA4, Microsoft Clarity, 네이버 분석, 네이버·카카오 로그인(전산 백엔드 API)</dd></div>
           </dl>
         </section>
         <section aria-labelledby="planit-features">
           <h3 id="planit-features">핵심 기능</h3>
           <ul class="list">
-            <li><strong>홈 랜딩</strong>과 <strong>여행 목록·상세</strong></li>
+            <li><strong>홈 랜딩</strong>과 <strong>여행 목록·상세</strong>
+              <ul>
+                <li>홈 「10월 특가여행」 섹션을 「가성비 동남아」 레일로 바꿨습니다(<span class="nw">2026-11-04</span>).</li>
+                <li>여행 탭을 전체 상품 목록 + 카테고리 칩(초가성비·가성비 포함)으로 단순화하고, 같은 여행지 상품은 한 카드로 묶어 옵션으로 고르게 했습니다.</li>
+                <li>상품은 전산의 상품 대량 등록·정리 API 로 새 목록(28개 상품)에 맞춰 한 번에 교체했습니다(<span class="nw">2026-10-29</span>).</li>
+              </ul>
+            </li>
             <li><strong>여행 랜딩 시리즈:</strong> 피그마 시안을 웹 1440·모바일 390 두 벌로 1:1 코드화하고 스크롤 모션을 붙였습니다.
               <ul>
-                <li><span class="nw">LP-01</span> 원페이지 상담, <span class="nw">LP-02</span> 후불여행, <span class="nw">LP-03</span> 동남아 월 가격, <span class="nw">LP-04</span> 신혼여행, <span class="nw">LP-06</span> 우정여행, <span class="nw">LP-07</span> 가족여행</li>
-                <li>카테고리별 정적 경로 <code>/travel/lp/&lt;slug&gt;/</code> 10개</li>
+                <li><span class="nw">LP-01</span> 원페이지 상담, <span class="nw">LP-02</span> 후불여행, <span class="nw">LP-03</span> 동남아 월 가격, <span class="nw">LP-04</span> 신혼여행, <span class="nw">LP-05</span> 효도여행, <span class="nw">LP-06</span> 우정여행, <span class="nw">LP-07</span> 가족여행, 보험 B2B 시상여행(피그마 <span class="nw">LP-08</span>)</li>
+                <li>카테고리별 정적 경로 <code>/travel/lp/&lt;slug&gt;/</code> 11개</li>
                 <li><span class="nw">LP-07</span> 가족여행: 가족에게 보내는 공유 카드(카카오톡 공유)와 인원 계산기(3·4·5인 + 직접 입력, 1인 월 금액 × 인원)</li>
+                <li><span class="nw">LP-05</span> 효도여행(<span class="nw">2026-10-27</span>): 형제 수 계산기(혼자·2·3·4명, 부모님 2인 월 금액을 형제 수로 나눔). 표지는 테마 페이지와 같은 영상을 씁니다.</li>
+                <li>보험 B2B 시상여행(<span class="nw">2026-10-27</span>, <code>/travel/lp/incentive/</code>): 시안의 신청 칸(이름·직책, 소속, 인원, 1인 예산)이 개인용 공용 폼과 달라 전용 B2B 신청서를 랜딩 안에 따로 만들고, 같은 접수 API 로 보냅니다. 「본부·지점에 링크 공유하기」는 카카오톡 리스트형 메시지입니다.</li>
+                <li><span class="nw">LP-10</span> 렌탈+동남아(<code>/travel/lp/rental-sea/</code>) — 진행 중(<span class="nw">2026-11-06</span>): 피그마 시안 코드화, 제품 사진이 끝없이 흐르는 띠, 렌탈 상담 폼과 제3자 제공 동의</li>
               </ul>
             </li>
             <li><strong>링크 허브(<span class="nw">LP-08</span>):</strong> 인스타그램 캐러셀에서 들어오는 <a href="https://플랜잇.com/link/"><code>/link/</code></a>. 버튼마다 UTM 을 붙여 어느 버튼으로 들어온 유입인지 전산에서 구분합니다.</li>
             <li><strong>월 납부금 플로우(<span class="nw">LP-08</span>):</strong> <a href="https://플랜잇.com/link/monthly/"><code>/link/monthly/</code></a>
               <ol class="steps" style="margin:4px 0" aria-label="월 납부금 플로우 단계"><li>01 여행지</li><li>02 인원·시기</li><li>03 결과·카카오톡 공유</li><li>04 상담 신청</li></ol>
               상담 신청은 여행 랜딩 폼과 같은 규칙·접수 API 를 쓰고, 앞 단계에서 고른 값을 미리 채웁니다.</li>
-            <li><strong>견적 일정표 랜딩:</strong> 견적번호마다 일정표 페이지를 공용 화면 틀 하나와 견적별 데이터 모듈로 찍어 냅니다(검색 노출 제외).</li>
+            <li><strong>견적 일정표:</strong> 견적번호마다 고객에게 보내는 일정표 페이지입니다(검색 노출 제외). 처음에는 공용 화면 틀 하나와 견적별 데이터 모듈로 빌드 때 구웠고, 지금은 어드민에서 번호를 발급하면 일정 스냅샷이 서버에 저장되고 공용 화면이 번호로 읽어 그립니다.
+              <ul>
+                <li>짧은 주소 <code>/q/번호</code>(<span class="nw">2026-11-05</span>): CloudFront 함수가 공용 화면을 돌려주고 주소창은 <code>/q/번호</code> 그대로 둡니다. 구운 번호는 구운 일정, 새 번호는 서버 스냅샷을 그립니다.</li>
+                <li>견적서 만들기 전용 주소 <code>/admin/quote/</code>(<span class="nw">2026-11-05</span>): 어드민 탭 안의 하위 탭에서 떼어 내고, 어드민 로그인 단계를 재사용 컴포넌트로 빼서 함께 씁니다.</li>
+                <li>모두투어 사진 자동 삽입(<span class="nw">2026-11-06</span>): 표지 1장 · 일차별 관광지 최대 3장 · 호텔 1장. 선택관광·식사 항목과 외부 DB 사진은 넣지 않고, 어드민에서 표지를 바꾸거나 사진을 끌 수 있습니다. 번호 발급 때 스냅샷에 저장하고, 공개 화면은 사진을 referrer 없이 불러옵니다.</li>
+                <li>「일정표 미리보기」(<span class="nw">2026-11-06</span>): 번호를 발급하지 않고 지금 입력한 상태를 고객 화면 그대로 새 탭에서 봅니다.</li>
+                <li>견적서 화면과 계산 규칙(계약금 먼저 차감, 납부 방식 추가)은 공동 작업자가 맡았고, 저는 번호 발급·주소·사진·미리보기와 운영 승격을 맡았습니다.</li>
+              </ul>
+            </li>
+            <li><strong>소셜 로그인(네이버·카카오)</strong>(<span class="nw">2026-10-28</span>): 로그인 화면, 제공자별 콜백 페이지, 마이페이지(로그아웃·회원 탈퇴)를 만들고 개인정보처리방침·이용약관을 개정했습니다. 로그인·세션은 전산 백엔드 API 가 맡습니다.</li>
+            <li><strong>휴대폰·인터넷 새 화면 운영 전환</strong>(<span class="nw">2026-11-05</span>): 공동 작업자가 만든 새 화면(인터넷은 첫 화면·직접 선택·맞춤 추천·지원금 안내 4개)을 빌드 플래그 하나가 함께 켜던 것을 휴대폰·인터넷 둘로 나눠, 백엔드가 준비된 쪽부터 운영에 켰습니다.</li>
             <li><strong>상담 접수 폼:</strong> 생년월일·납부 방식 등 전 항목 필수, 개인정보 동의 문구는 버전으로 관리, 입력 칸 초점 표시는 칸 테두리 한 겹으로 통일</li>
             <li><strong>휴대폰 비교·견적</strong>, <strong>렌탈·인터넷·보험</strong> 페이지</li>
             <li><strong>테마 페이지 영상 히어로:</strong> 여러 테마 페이지가 쓰는 공용 컴포넌트</li>
@@ -485,7 +511,7 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
           <div class="notes">
             <article class="note">
               <h4>정적 내보내기와 랜딩 페이지의 공존</h4>
-              <p>서버 없이 S3 + CloudFront 로 서비스하려고 <code>output: 'export'</code> 를 썼습니다. 요청 시점 렌더링이 없으므로 랜딩 경로는 카테고리별 정적 경로 10개(<code>/travel/lp/&lt;slug&gt;/</code>)로 빌드 때 미리 만듭니다.</p>
+              <p>서버 없이 S3 + CloudFront 로 서비스하려고 <code>output: 'export'</code> 를 썼습니다. 요청 시점 렌더링이 없으므로 랜딩 경로는 카테고리별 정적 경로 11개(<code>/travel/lp/&lt;slug&gt;/</code>)로 빌드 때 미리 만듭니다.</p>
               <p>상담 접수처럼 서버가 필요한 동작은 전산 백엔드의 플랜잇 API 로 넘겨, 사이트 자체는 정적 파일로만 유지합니다.</p>
             </article>
             <article class="note">
@@ -508,6 +534,21 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
               <h4>공유 링크로 그대로 다시 여는 계산 결과</h4>
               <p>월 납부금 플로우는 한 페이지 안에서 01~04 단계를 바꿔 그리지만, 지금 단계와 고른 값(여행지·인원·시기)을 주소의 쿼리에 함께 담습니다.</p>
               <p>그래서 03 결과 화면을 카카오톡으로 보내면 받은 사람도 같은 결과 화면을 바로 엽니다. 여행지별 1인 월 금액은 여행 목록과 같은 상품 데이터·계산을 써서 페이지마다 숫자가 어긋나지 않게 했습니다.</p>
+            </article>
+            <article class="note">
+              <h4>정적 사이트에서 새 견적번호 열기</h4>
+              <p>사이트가 정적 파일이라, 어드민에서 새로 발급한 번호에는 그 번호의 일정표 파일이 없습니다. 그래서 새 번호의 고객 링크를 공용 화면 하나로 모으고, 그 화면이 주소에서 번호를 읽어 서버에 저장된 일정 스냅샷을 불러오게 했습니다.</p>
+              <p>고객에게 보내는 주소는 <code>/q/번호</code> 로 줄이고, CloudFront 함수가 이 요청에 공용 화면을 돌려줍니다. 운영에는 CloudFront 함수 변경을 먼저 적용한 뒤 사이트를 승격합니다. 순서가 바뀌면 그 사이에 복사한 <code>/q/</code> 링크가 404 가 되기 때문입니다.</p>
+            </article>
+            <article class="note">
+              <h4>발급 전에 보는 미리보기</h4>
+              <p>미리보기는 번호 발급 때와 같은 함수로 스냅샷을 만들어 브라우저 <code>localStorage</code> 에 담고, 새 탭의 고객 화면이 서버 대신 그 값을 같은 정규화로 그립니다. 그래서 미리보기와 실제 고객 화면이 어긋나지 않습니다.</p>
+              <p>어드민에서 다시 누르면 <code>storage</code> 이벤트로 열린 탭이 새로고침 없이 바뀌고, 맨 위 배너에 저장되지 않은 화면이라는 점과 발급 전 점검에 걸린 항목을 보여 줍니다. 주소에 번호가 있는 고객 링크는 미리보기로 열리지 않습니다.</p>
+            </article>
+            <article class="note">
+              <h4>로그인 콜백 값이 분석 도구로 새지 않게</h4>
+              <p>소셜 로그인 콜백 주소에는 1회용 <code>code</code>·<code>state</code> 가 붙어 옵니다. 네이버 분석 스크립트는 React 보다 먼저 현재 주소를 보내므로, 루트 레이아웃 <code>&lt;head&gt;</code> 맨 앞의 인라인 스크립트가 콜백 페이지에서만 이 값을 주소창에서 먼저 지웁니다.</p>
+              <p>콜백 교환은 한 문서에서 한 번만 해서, 개발 모드에서 effect 가 두 번 돌아도 1회용 state 로 보낸 두 번째 요청이 실패하지 않게 했습니다.</p>
             </article>
           </div>
         </section>
@@ -600,8 +641,8 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
     <div class="proj-grid">
       <aside class="rail" aria-label="TnG INSURE 저장소 요약">
         <dl class="rail-facts">
-          <div><dt class="repo">Insurance_backend</dt><dd>Spring Boot API 서버</dd><dd><span class="nw">2026-08-05</span> 시작</dd><dd>커밋 756 / 973 (78%)</dd><dd>JUnit 4,509건</dd><dd>Java 약 25만 줄(이 중 절반이 테스트), Flyway 마이그레이션 91개</dd></div>
-          <div><dt class="repo">Insurance_frontend</dt><dd>웹 어드민 「TnG INSURE」</dd><dd><span class="nw">2026-08-10</span> 시작</dd><dd>커밋 767 / 895 (86%)</dd><dd>테스트 1,844건</dd><dd>TypeScript 약 7.8만 줄</dd></div>
+          <div><dt class="repo">Insurance_backend</dt><dd>Spring Boot API 서버</dd><dd><span class="nw">2026-08-05</span> 시작</dd><dd>커밋 829 / 1,064 (78%)</dd><dd>JUnit 5,459건</dd><dd>Java 약 28만 줄(이 중 절반이 테스트), Flyway 마이그레이션 101개</dd></div>
+          <div><dt class="repo">Insurance_frontend</dt><dd>웹 어드민 「TnG INSURE」</dd><dd><span class="nw">2026-08-10</span> 시작</dd><dd>커밋 802 / 941 (85%)</dd><dd>테스트 1,973건</dd><dd>TypeScript 약 8.5만 줄</dd></div>
           <div><dt class="repo">Insurance_infra</dt><dd>Terraform 설계 초안 18개 파일</dd></div>
         </dl>
         <nav class="rail-toc" aria-label="TnG INSURE 목차">
@@ -620,6 +661,7 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
           <h3 id="insure-overview">개요</h3>
           <p>보험·휴대폰·인터넷·렌탈·여행 5개 업종의 고객과 상담을 한곳에서 관리하는 사내 전산입니다.</p>
           <p>Spring Boot 백엔드가 전산 API 와 대외 사이트 플랜잇의 API 를 함께 제공하고, React 웹 어드민 <span class="nw">「TnG INSURE」가</span> 사내 화면을 맡습니다.</p>
+          <p>최근에는 견적 일정표 저장·공개 API, 모두투어 견적 사진 매핑, 여행 계약서 PDF 읽기와 계약 보고, 플랜잇 고객 소셜 로그인 API 를 더했습니다.</p>
         </section>
         <section aria-labelledby="insure-role">
           <h3 id="insure-role">역할</h3>
@@ -627,17 +669,19 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <li>도메인 설계와 API 구현, DB 스키마·마이그레이션 관리</li>
             <li>웹 어드민 화면 구현, 피그마 시안 적용, 모바일·다크모드 대응</li>
             <li>CI/CD 구성과 dev·운영 배포, dev → 운영 승격 관리</li>
-            <li>플랜잇 사이트 접수를 전산 업무로 잇는 동기화와 알림</li>
+            <li>플랜잇 사이트 접수를 전산 업무로 잇는 동기화와 알림, 플랜잇 견적·회원 API</li>
+            <li>반복되는 엑셀 업무 도구화(렌탈 수수료표 월간 갱신, 휴대폰 단가표 변환)</li>
           </ul>
         </section>
         <section aria-labelledby="insure-stack">
           <h3 id="insure-stack">스택</h3>
           <dl class="spec">
-            <div><dt>백엔드</dt><dd>Java 17, Spring Boot 3.5, PostgreSQL, Redis, Flyway, JWT</dd></div>
+            <div><dt>백엔드</dt><dd>Java 17, Spring Boot 3.5, PostgreSQL, Redis, Flyway, JWT, PDFBox</dd></div>
             <div><dt>프런트엔드</dt><dd>React 19, vinext(Vite 8 SSR), Tailwind CSS 4, Tiptap, TypeScript</dd></div>
-            <div><dt>저장소·연동</dt><dd>S3/MinIO, 웹푸시, CalDAV, PortOne·Toss 결제, Mattermost(자체 운영)</dd></div>
+            <div><dt>저장소·연동</dt><dd>S3/MinIO, 웹푸시, CalDAV, PortOne·Toss 결제, Mattermost(자체 운영), 모두투어 API, 네이버·카카오 로그인</dd></div>
             <div><dt>배포</dt><dd>GitHub Actions, Docker Compose + Caddy(dev EC2), ECR → ECS(운영)</dd></div>
             <div><dt>인프라 설계</dt><dd>Terraform(VPC·ALB·RDS 초안)</dd></div>
+            <div><dt>업무 도구</dt><dd>Python 3.12, openpyxl</dd></div>
           </dl>
         </section>
         <section aria-labelledby="insure-features">
@@ -651,7 +695,11 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <div><dt>일정·근태</dt><dd>캘린더(CalDAV), 근태</dd></div>
             <div><dt>결제·포인트</dt><dd>포인트, PortOne·Toss 결제</dd></div>
             <div><dt>단가</dt><dd>휴대폰·렌탈 단가표, 렌탈 수수료표 직원별 마진률(원 수수료를 저장해 두고 조회하는 직원의 마진률로 다시 계산)</dd></div>
-            <div><dt>사이트 연동</dt><dd>사이트 접수 → 고객·케이스 자동 생성, 유입 매체 분류, 미배정 알림</dd></div>
+            <div><dt>사이트 연동</dt><dd>사이트 접수 → 고객·케이스 자동 생성, 유입 매체 분류, 미배정 알림, 모두투어 그룹번호 만료 대응(동기화가 번호를 미리 옮기고 사라진 번호는 상품코드로 되찾음)</dd></div>
+            <div><dt>계약 보고</dt><dd>실적 › 계약 보고(<span class="nw">2026-11-04</span>): 직원이 올린 계약을 승인 없이 기록하고 상담건 계약 칸을 같은 트랜잭션에서 채움, 조회 범위는 보고자 기준(전사·부서·본인)</dd></div>
+            <div><dt>여행 계약서</dt><dd>서명된 후불 약정서 PDF 의 텍스트 층에서 칸을 읽어 상담건별로 기록(<span class="nw">2026-11-04</span>). 스캔본은 실패, 핵심 칸이 빠지면 검토 필요로 표시하고 사람이 고쳐 확정</dd></div>
+            <div><dt>플랜잇 견적</dt><dd>모두투어 견적 상세 조회, 견적번호 자동 발번, 고객 일정표 스냅샷 저장·공개 조회(<span class="nw">2026-11-05</span>), 견적 상세에 상품 상세·일정·호텔 세 API 의 사진 주소 매핑(<span class="nw">2026-11-06</span>)</dd></div>
+            <div><dt>플랜잇 회원</dt><dd>고객 네이버·카카오 소셜 로그인 API(<span class="nw">2026-10-28</span>). 직원 토큰과 서명 키·쿠키·보안 체인을 분리, 탈퇴 시 개인정보 즉시 삭제</dd></div>
           </dl>
           <h4 class="sub-h">웹 어드민 화면</h4>
           <ul class="list">
@@ -660,10 +708,17 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <li>보험계약 엑셀 임포트</li>
             <li>매출·수수료 화면</li>
             <li>렌탈 수수료표 직원별 마진률 관리</li>
+            <li>계약 보고 화면(카테고리 탭·조회·엑셀). 상담건에서 「계약 완료」를 켜면 그 상담건으로 보고 양식을 엽니다.</li>
+            <li>여행 계약서 패널(PDF 업로드 → 읽은 칸 확인·확정)</li>
             <li>역할별 권한</li>
             <li>캘린더, 근태</li>
             <li>모바일 대응, 다크모드</li>
             <li>피그마 시안 적용</li>
+          </ul>
+          <h4 class="sub-h">업무 도구</h4>
+          <ul class="list">
+            <li><strong>렌탈 수수료표 월간 갱신 도구 체인</strong>(Python 스크립트 6개): 렌탈사 원본 엑셀은 읽기만 하고 ① 수수료 가공본 ② 전산 업로드 양식(15열) ③ 전월 대비 변경분을 차례로 만듭니다. 처음 보는 시트·머리글이 나오면 종료 코드로 멈춰 양식 변화를 잡고, 렌탈사 정책 파일과 프로모션 PPT 도 변환합니다. 11월분을 이 체인으로 만들어 운영에 반영했습니다.</li>
+            <li><strong>휴대폰 단가표 변환 도구 키트</strong>(<span class="nw">2026-10-27</span>): 통신사 단가표 이미지를 엑셀로 옮기는 도구를 키트로 묶어 팀원에게 인수인계했습니다.</li>
           </ul>
         </section>
         <section aria-labelledby="insure-notes">
@@ -673,7 +728,7 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
               <h4>제외 집합으로 관리하는 dev → 운영 승격</h4>
               <p>dev 에는 기능이 계속 쌓이지만, 모든 기능이 같은 시점에 운영에 올라가지는 않습니다.</p>
               <p>승격할 때마다 <code>promote/&lt;날짜&gt;</code> 브랜치를 만들고, 아직 운영에 올리지 않을 기능의 파일을 <strong>제외 집합</strong>(백엔드 146개·프런트엔드 54개 파일)으로 묶어 빼고 올립니다.</p>
-              <p>운영에 올릴 범위를 승격 시점에 고를 수 있고, 이 방식으로 10차 승격까지 진행했습니다.</p>
+              <p>운영에 올릴 범위를 승격 시점에 고를 수 있고, 이 방식으로 19차 승격(<span class="nw">2026-11-06</span>)까지 진행했습니다.</p>
             </article>
             <article class="note">
               <h4>사이트 접수를 전산 업무로 바꾸는 동기화</h4>
@@ -695,8 +750,25 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             </article>
             <article class="note">
               <h4>테스트 비중</h4>
-              <p>백엔드 Java 코드의 절반이 테스트이고 JUnit 4,509건, 프런트엔드 테스트 1,844건이 있습니다.</p>
+              <p>백엔드 Java 코드의 절반이 테스트이고 JUnit 5,459건, 프런트엔드 테스트 1,973건이 있습니다.</p>
               <p>업종 5개와 역할별 권한이 얽힌 도메인이라 기능을 더할 때 기존 동작이 깨지지 않았는지 테스트로 먼저 확인합니다.</p>
+            </article>
+            <article class="note">
+              <h4>정적 사이트를 위한 공개 조회 API</h4>
+              <p>플랜잇 사이트는 정적 파일이라, 어드민에서 새로 발급한 견적번호의 일정은 서버에서 읽어야 합니다.</p>
+              <p>저장 API 는 일정 JSON 을 해석하지 않고 번호 형식, 본문 크기(64KB), JSON 객체인지만 확인한 뒤 정해 둔 최상위 키만 남겨 번호별로 덮어씁니다. 공개 조회는 저장한 스냅샷을 캐시 없이 그대로 돌려주고, 저장되지 않았거나 형식이 틀린 번호는 오류 코드가 있는 404 로 답합니다.</p>
+              <p>저장 API 는 404·405 를 내지 않게 했습니다. 프런트가 이 둘을 「API 가 아직 배포되지 않음」으로 읽기 때문입니다. 본문은 스트림으로 상한 + 1바이트까지만 읽고, 권한 판정은 본문을 읽기 전에 합니다.</p>
+            </article>
+            <article class="note">
+              <h4>외부 API 응답에서 사진만 골라 싣기</h4>
+              <p>모두투어 견적 상세에 쓰는 세 응답(상품 상세·일정·호텔)에는 사진 주소가 이미 들어 있었지만 읽지 않고 있었습니다.</p>
+              <p>대표 사진·일차별 관광지·호텔 사진을 각각 상한을 두고 매핑하되, 일정에서 빠지는 항목(선택관광 안내·식사·숙박·숨김)의 사진은 빼서 포함되지 않은 일정이 포함된 것처럼 보이지 않게 했습니다. 구글 장소·외부 호텔 DB 사진은 라이선스 때문에 싣지 않습니다.</p>
+              <p>세 칸은 따로 감싸 사진 매핑이 깨져도 기존 칸은 그대로 나갑니다. 테스트 픽스처는 실제 응답에서 매퍼가 읽는 키만 남겨(화이트리스트) 직원 식별 칸 같은 값이 저장소에 들어가지 않게 했습니다.</p>
+            </article>
+            <article class="note">
+              <h4>렌탈 변경분에서 「키만 바뀐 것」 가려내기</h4>
+              <p>렌탈사 원본 엑셀은 달마다 시트 이름·열 순서·상품명 꼬리표가 바뀝니다. 업로드 양식 변환은 열 문자를 박지 않고 머리글 문구로 열을 찾고, 처음 보는 시트나 머리글이 나오면 종료 코드로 멈춰 사람이 규칙을 정하게 했습니다.</p>
+              <p>전월 대비 변경분은 상품 키로 신규·삭제·수수료 변경을 나누고 「이전 − 삭제 + 신규 = 새」 같은 등식을 검증합니다. 상품명 꼬리표만 바뀌어도 삭제 + 신규로 잡히므로, 같은 렌탈사의 삭제·신규 행을 모델명 + 의무개월로 짝지어 「키 글자만 바뀐 것」과 「진짜 빠진 것」을 따로 보여 줍니다.</p>
             </article>
           </div>
         </section>
@@ -726,7 +798,7 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
           <div><dt>채널</dt><dd>페이스북·인스타그램</dd></div>
           <div><dt>최적화</dt><dd>픽셀 Lead 전환</dd></div>
           <div><dt>유입 추적</dt><dd>동적 UTM, 전산 유입 매체 분류</dd></div>
-          <div><dt>캠페인</dt><dd>여행 목적별(신혼·우정·가족)</dd></div>
+          <div><dt>캠페인</dt><dd>여행 목적별(신혼·우정·가족·효도)</dd><dd>B2B(보험 시상여행·영업조직)</dd></div>
         </dl>
         <p class="rail-note">금액·성과 수치와 계정·픽셀 식별자는 싣지 않습니다. 구조와 운영 방식만 설명합니다.</p>
         <nav class="rail-toc" aria-label="메타 광고 운영 목차">
@@ -746,15 +818,15 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
           <p>플랜잇 사이트로 상담 접수를 모으기 위한 메타(페이스북·인스타그램) 광고 운영입니다.</p>
           <p><strong>메타 공식 Ads MCP</strong> 로 캠페인·광고 세트·소재·광고를 코드로 생성·분석·조정합니다.</p>
           <p>광고 클릭에서 사이트 접수, 전산의 고객·상담 케이스까지 한 줄로 이어지도록 계측을 설계했습니다.</p>
-          <p>여행 목적별 캠페인(신혼·우정·가족)을 각 랜딩(<span class="nw">LP-04</span>·<span class="nw">LP-06</span>·<span class="nw">LP-07</span>)에 이어 운영합니다.</p>
+          <p>여행 목적별 캠페인(신혼·우정·가족·효도)과 B2B 캠페인(보험 시상여행·영업조직)을 각 랜딩에 이어 운영합니다.</p>
         </section>
         <section aria-labelledby="meta-role">
           <h3 id="meta-role">역할</h3>
           <ul class="list">
-            <li><strong>캠페인 구조 설계:</strong> 전환 목표, 광고 세트 분리 기준, 노출 위치·연령 설정</li>
-            <li><strong>소재·카피:</strong> 페르소나 문서 기반 타깃과 문구, 표현 규칙 점검, 소재 등록</li>
+            <li><strong>캠페인 구조 설계:</strong> 전환 목표, 광고 세트 분리 기준, 노출 위치·연령 설정, 예산 유형·시간대 스케줄</li>
+            <li><strong>소재·카피:</strong> 페르소나 문서 기반 타깃과 문구, 표현 규칙 점검, 피그마 소재 export·업로드·등록</li>
             <li><strong>계측:</strong> 메타 픽셀 Lead 이벤트(사이트 코드), 동적 UTM, 전산 유입 매체 분류(백엔드 코드)</li>
-            <li><strong>분석·조정:</strong> 노출 위치·연령별 결과를 보고 세트 구조와 타깃 수정, 연령·성별·노출 위치·일자별 성과 분석 리포트 작성</li>
+            <li><strong>분석·조정:</strong> 노출 위치·연령별 결과를 보고 세트 구조와 타깃 수정, 연령·성별·노출 위치·일자·소재별 성과 분석 리포트와 퍼널 분석 작성</li>
           </ul>
         </section>
         <section aria-labelledby="meta-tools">
@@ -763,9 +835,9 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <div><dt>광고 운영</dt><dd>메타 공식 Ads MCP(캠페인·광고 세트·소재·광고 생성과 인사이트 조회), Claude Code</dd></div>
             <div><dt>전환 신호</dt><dd>메타 픽셀 Lead 이벤트(접수 성공 시 1회, eventID 중복 제거)</dd></div>
             <div><dt>유입 추적</dt><dd>동적 UTM, 전산 유입 매체 분류(ig/fb, 광고, 노출 위치)</dd></div>
-            <div><dt>소재</dt><dd>정사각(1080)·세로(1080x1920) 두 규격, S3 에 올린 뒤 URL 로 등록, Advantage+ 크리에이티브 자동 음악(<code>music_generation</code>)</dd></div>
-            <div><dt>분석</dt><dd>인사이트를 연령·성별·노출 위치·일자별로 나눠 조회, 전산 접수(UTM)와 대조</dd></div>
-            <div><dt>기준 문서</dt><dd>페르소나 문서 6종, 표현 금지 규칙</dd></div>
+            <div><dt>소재</dt><dd>정사각(1080)·세로(1080x1920) 두 규격, 피그마 섹션을 export 해 로컬 업로드(업로드 세션 발급 → resumable POST → finalize, 이미지·영상 공통)로 등록(<span class="nw">2026-11-03</span> 전에는 S3 URL 로 등록), Advantage+ 크리에이티브 자동 음악(<code>music_generation</code>)</dd></div>
+            <div><dt>분석</dt><dd>인사이트를 연령·성별·노출 위치·일자·소재별로 나눠 조회, 전산 접수(UTM)와 대조, 보고서·퍼널 분석은 피그마 페이지로 정리</dd></div>
+            <div><dt>기준 문서</dt><dd>페르소나 문서 6종, 표현 금지 규칙, 운영 규칙</dd></div>
           </dl>
         </section>
         <section aria-labelledby="meta-ops">
@@ -777,10 +849,15 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
             <li><strong>표현 규칙:</strong> 「무이자」「0원」「최저가」는 쓰지 않습니다. 조건이 붙는 가격은 「1인」「개월」을 함께 적습니다.</li>
             <li><strong>동적 UTM:</strong> 새 광고에는 <code>utm_source={{site_source_name}}</code> 를 비롯해 노출 위치(<code>{{placement}}</code>)·광고 이름(<code>{{ad.name}}</code>) 같은 동적 값을 반드시 붙입니다.</li>
             <li><strong>세트 구조 조정:</strong> 노출 위치·연령 분석 결과로 Audience Network 를 제외하고, 연령을 고정하고, 피드와 릴스를 별도 세트로 나눴습니다.</li>
-            <li><strong>여행 목적별 캠페인:</strong> 신혼여행(<span class="nw">LP-04</span>)에 이어 우정여행(<span class="nw">LP-06</span>)·가족여행(<span class="nw">LP-07</span>) 캠페인을 더했습니다. 캠페인마다 해당 페르소나의 연령대로 타깃을 고정하고 그 랜딩으로 보냅니다.</li>
+            <li><strong>여행 목적별 캠페인:</strong> 신혼여행(<span class="nw">LP-04</span>)에 이어 우정여행(<span class="nw">LP-06</span>)·가족여행(<span class="nw">LP-07</span>)·효도여행(<span class="nw">LP-05</span>) 캠페인을 더했습니다. 캠페인마다 해당 페르소나의 연령대로 타깃을 고정하고 그 랜딩으로 보냅니다. 동남아 가성비 소재도 더했습니다.</li>
+            <li><strong>B2B 캠페인:</strong> 보험 B2B 시상여행 랜딩으로 보내는 캠페인과 영업조직 대상 캠페인(<span class="nw">2026-11-03</span>)을 따로 엽니다. 영업조직 1차는 타깃 연령을 고정하고 성과가 낮은 소재를 일시정지하는 식으로 재편했습니다(<span class="nw">2026-11-05</span>).</li>
+            <li><strong>목표·예산 설계:</strong> 신혼 3차는 총예산으로 잡고 저녁 시간대에만 노출하는 스케줄(day-parting)을 붙였습니다. 우정·가족 2차는 잠재고객 목표에서 브랜드 인지도 목표(도달·빈도 제한)로 바꿨습니다.</li>
             <li><strong>노출 위치별 광고 세트:</strong> 캠페인마다 피드(정사각) 세트와 릴스·스토리(세로) 세트를 따로 두고, 규격에 맞는 소재를 각각 붙입니다.</li>
+            <li><strong>소재 파이프라인:</strong> 피그마 섹션 → export → 메타 업로드. <span class="nw">2026-11-03</span>부터 로컬 업로드 경로(업로드 세션 발급 → resumable POST → finalize)를 이미지·영상 모두에 써서 S3 를 거치지 않습니다.</li>
             <li><strong>자동 음악:</strong> 새 소재는 Advantage+ 크리에이티브의 자동 음악(<code>music_generation</code>)을 켜서 등록합니다.</li>
             <li><strong>성과 분석 리포트:</strong> 픽셀 Lead 기준 결과를 연령·성별·노출 위치·일자별로 나눠 보고, 전산에 들어온 접수와 맞춰 본 뒤 다음 타깃·세트 구조를 정합니다.</li>
+            <li><strong>보고서·퍼널 분석:</strong> 누적 성과 보고서(<span class="nw">2026-11-03</span>)와 B2B 퍼널 분석(<span class="nw">2026-11-05</span>)을 피그마 페이지에 정리했습니다. 연령·성별·노출 위치·소재별로 나누고, 랜딩 조회 → 접수 전환율을 함께 봅니다.</li>
+            <li><strong>준비 중인 캠페인:</strong> 렌탈+동남아(<span class="nw">LP-10</span>) 비교형 이미지 소재와 영상 캠페인을 만들어 두고, 랜딩이 운영에 반영되면 게시합니다(<span class="nw">2026-11-06</span>, 진행 중).</li>
           </ul>
         </section>
         <section aria-labelledby="meta-notes">
@@ -822,6 +899,22 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
               <p>결과는 연령·성별·노출 위치·일자 네 축으로 나눠 봅니다. 같은 캠페인 안에서도 연령·성별·지면에 따라 반응이 달라질 수 있어서, 합계만 보고는 무엇을 바꿀지 정하기 어렵습니다.</p>
               <p>결과가 기대와 다르면 먼저 계측 경로(같은 접수 폼·같은 Lead 이벤트)가 다른 랜딩과 같은지 확인해 기술 결함을 배제하고, 그다음 소재·타깃을 봅니다.</p>
             </article>
+            <article class="note">
+              <h4>시간대 스케줄과 예산 유형</h4>
+              <p>저녁 시간대에만 광고를 내는 스케줄은 총예산 캠페인에서 걸 수 있습니다. 그런데 게시된 캠페인은 예산 유형(일예산 ↔ 총예산)을 바꿀 수 없습니다.</p>
+              <p>그래서 예산 유형을 바꿔야 할 때는 기존 캠페인을 고치지 않고 새 캠페인으로 만들어 옮깁니다.</p>
+            </article>
+            <article class="note">
+              <h4>MCP 로 운영하며 정한 규칙</h4>
+              <p>타깃이나 예산을 고치면 광고 세트가 일시정지되는 경우가 있어, 수정 절차에 다시 켜는 단계와 상태 확인까지 넣었습니다.</p>
+              <p>Advantage+ 오디언스는 기본으로 켜 두고, 사용자가 명시적으로 끄라고 하거나 연령 제한을 반드시 지켜야 할 때만 끕니다.</p>
+              <p>관심사 타깃은 ID 를 찾는 검색 도구가 없어 임의의 ID 를 넣지 않습니다. 인스턴트 양식은 페이지의 약관 수락이 먼저 되어 있어야 만들 수 있습니다.</p>
+            </article>
+            <article class="note">
+              <h4>랜딩 문제와 소재 문제 나누기</h4>
+              <p>광고 지표 옆에 랜딩 조회 → 접수 전환율을 함께 둡니다. 클릭과 랜딩 조회는 들어오는데 접수로 이어지지 않으면 랜딩을, 클릭부터 적으면 소재·타깃을 먼저 고칩니다.</p>
+              <p>누적 성과 보고서와 B2B 퍼널 분석을 이 기준으로 연령·성별·노출 위치·소재별로 나눠 정리했습니다.</p>
+            </article>
           </div>
         </section>
       </div>
@@ -845,10 +938,10 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
   <div class="wrap">
     <h2 class="sec-h" id="stack-h">기술 스택</h2>
     <dl class="spec stack">
-      <div><dt>백엔드</dt><dd><ul><li>Java 17</li><li>Spring Boot 3.5</li><li>PostgreSQL</li><li>Redis</li><li>Flyway</li><li>JWT</li></ul></dd></div>
+      <div><dt>백엔드</dt><dd><ul><li>Java 17</li><li>Spring Boot 3.5</li><li>PostgreSQL</li><li>Redis</li><li>Flyway</li><li>JWT</li><li>PDFBox</li></ul></dd></div>
       <div><dt>프런트엔드</dt><dd><ul><li>TypeScript</li><li>React 19</li><li>Next.js 15</li><li>vinext(Vite 8)</li><li>Tailwind CSS 4</li><li>Tiptap</li><li>three.js</li></ul></dd></div>
-      <div><dt>인프라</dt><dd><ul><li>AWS ECS·ECR·EC2·S3·CloudFront</li><li>CloudFormation</li><li>Terraform</li><li>Docker Compose</li><li>Caddy</li><li>GitHub Actions</li></ul></dd></div>
-      <div><dt>도구</dt><dd><ul><li>JUnit</li><li>vitest</li><li>헤드리스 Chrome</li><li>Figma MCP</li><li>Meta Ads MCP</li><li>Claude Code</li></ul></dd></div>
+      <div><dt>인프라</dt><dd><ul><li>AWS ECS·ECR·EC2·S3·CloudFront(CloudFront 함수 포함)</li><li>CloudFormation</li><li>Terraform</li><li>Docker Compose</li><li>Caddy</li><li>GitHub Actions</li></ul></dd></div>
+      <div><dt>도구</dt><dd><ul><li>JUnit</li><li>vitest</li><li>헤드리스 Chrome</li><li>Python(openpyxl)</li><li>Figma MCP</li><li>Meta Ads MCP</li><li>Claude Code</li></ul></dd></div>
     </dl>
   </div>
 </section>
@@ -872,6 +965,14 @@ dialog.lb::backdrop{background:rgba(12,16,18,.5)}
       <article class="way">
         <h3>AI 도구 활용</h3>
         <p>Claude Code 로 작업을 서브에이전트에 나눠 맡기고, PR 리뷰와 배포 검증까지 개발 흐름에 넣었습니다.</p>
+      </article>
+      <article class="way">
+        <h3>반복 업무 도구화</h3>
+        <p>렌탈 수수료표 월간 갱신·휴대폰 단가표 변환처럼 매달 되풀이되는 엑셀 작업을 스크립트로 만들고, 양식이 바뀌면 종료 코드로 멈추게 했습니다. 휴대폰 단가표 도구는 키트로 묶어 팀원에게 넘겼습니다.</p>
+      </article>
+      <article class="way">
+        <h3>만들지, 쓸지</h3>
+        <p>전자서명은 자체 구축 대신 외부 전자계약 서비스를 쓰고, 전산은 웹훅으로만 잇기로 했습니다(<span class="nw">2026-11-05</span>).</p>
       </article>
     </div>
   </div>
